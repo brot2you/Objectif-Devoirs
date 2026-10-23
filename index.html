@@ -207,6 +207,29 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 #nav .ni img{font-size:initial}
 @media(max-width:620px){.sp-mascot{width:108px}.sp-mascot img{max-height:116px}.sp-ico{height:72px!important}.sp-ico img{height:70px;width:82px}.sp-tile{min-height:153px}.sp-nav-image{width:29px;height:28px}}
 
+
+/* STUDY POP ERGONOMIE V2.2 */
+.sp-guide-kicker{font-size:.72rem;letter-spacing:.10em;color:#977060;font-weight:900;margin-bottom:7px}
+.sp-learning{background:#fffefa;border:1px solid #ebe3db;border-radius:22px;padding:21px;margin-bottom:22px;box-shadow:0 4px 15px #263B500a}
+.sp-learning h2{font:900 1.27rem Nunito,system-ui;color:#263B50;margin:0 0 15px}
+.sp-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.sp-steps button{background:#f8f4ef;border:1px solid #e9e2dc;border-radius:17px;min-height:128px;padding:14px 10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:7px;color:#263B50}
+.sp-steps button:hover,.sp-steps button:focus-visible{border-color:#40AFA7;background:#eaf7f3}
+.sp-steps button span{width:30px;height:30px;background:#DFF2ED;border-radius:50%;display:grid;place-items:center;color:#226f68;font-weight:900}
+.sp-steps button:nth-child(2) span{background:#FFF0D0;color:#946921}.sp-steps button:nth-child(3) span{background:#EEE7FA;color:#7057A3}
+.sp-steps strong{font-size:.92rem}.sp-steps small{font-size:.75rem;color:#647080;text-align:center}
+.sp-tools-title{font:900 1.25rem Nunito,system-ui;color:#263B50;margin:15px 0}
+.sp-tools-title small{font:500 .8rem Inter,system-ui;color:#647080;margin-left:8px}
+.sp-next-task{padding:12px 15px;background:#f4faf7;border-left:4px solid #40afa7;border-radius:11px;font-weight:700;font-size:.9rem;color:#263B50}
+.sp-guide-text,.sp-help-note{color:#667587;font-size:.8rem;font-weight:500;line-height:1.5}
+.sp-guide-text{margin:-4px 0 16px}.sp-help-note{margin-left:auto}
+#s-plan>.card:nth-of-type(2) .pg{display:flex;align-items:center;justify-content:center;width:110px;height:110px;margin:0 auto 0;animation:none;filter:none}
+.sp-timer-art{width:106px;height:106px;object-fit:contain;display:block;filter:drop-shadow(0 5px 10px #263B5018)}
+#s-plan .pr{width:170px;height:auto;min-height:105px;border-radius:18px;border:1px solid #d8eae3;background:#f5faf8;margin:0 auto 13px;box-shadow:none}
+#s-plan .pt{-webkit-text-fill-color:#263B50;background:none;font-variant-numeric:tabular-nums;font-size:2.2rem}
+#s-plan .pbar{height:8px;background:#e6e9e6}
+#s-plan .ppb{min-width:68px}
+@media(max-width:620px){.sp-steps{gap:6px}.sp-steps button{padding:11px 5px;min-height:122px}.sp-steps strong{font-size:.78rem}.sp-steps small{font-size:.67rem}.sp-help-note{display:block;width:100%;margin:5px 0 0}.sp-tools-title small{display:block;margin-left:0}}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -236,7 +259,7 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 <!-- STUDY POP DASHBOARD -->
 <div id="s-home" class="scr active">
  <section class="sp-hero"><div><span class="sp-eyebrow">OBJECTIF DEVOIRS • STUDY POP</span><h1 id="sp-greeting">Prêt pour ta mission ?</h1><p>Un petit pas à la fois. Toutes tes matières au même endroit.</p></div><div class="sp-mascot" aria-hidden="true"><img src="assets/study-pop/mascotte.webp" alt="" onerror="this.outerHTML=\x27🐼\x27"></div></section>
- <section class="sp-summary" aria-label="Mes missions du jour"><strong style="font:900 1.2rem Nunito,system-ui">🎯 Mes devoirs</strong><p id="sp-count" class="sp-note">Retrouve tes devoirs et avance à ton rythme.</p><div class="sp-progress" aria-hidden="true"><div id="sp-fill" style="width:0%"></div></div><div class="sp-actions"><button onclick="go('plan')">Voir mon planning →</button><button onclick="go('rev')">Réviser maintenant</button></div></section>
+ <section class="sp-summary" aria-label="Mon prochain devoir"><div class="sp-guide-kicker">MA PROCHAINE ÉTAPE</div><strong style="font:900 1.25rem Nunito,system-ui">Par quoi commencer ?</strong><p id="sp-count" class="sp-note">Retrouve tes devoirs et avance à ton rythme.</p><div id="sp-next-task" class="sp-next-task" aria-live="polite"></div><div class="sp-progress" aria-hidden="true"><div id="sp-fill" style="width:0%"></div></div><div class="sp-actions"><button onclick="go('plan')">Je gère mes devoirs →</button><button onclick="go('meth')">Je cherche une méthode</button></div></section><section class="sp-learning" aria-label="Apprendre à apprendre"><div class="sp-guide-kicker">MON PARCOURS D'APPRENTISSAGE</div><h2>Trois étapes pour avancer</h2><div class="sp-steps"><button onclick="go('plan')"><span>1</span><strong>Je m'organise</strong><small>Je choisis une tâche</small></button><button onclick="go('meth')"><span>2</span><strong>Je comprends</strong><small>Je trouve une méthode</small></button><button onclick="go('rev')"><span>3</span><strong>Je retiens</strong><small>Je me teste</small></button></div></section><div class="sp-tools-title">Tous mes outils <small>À utiliser quand j'en ai besoin</small></div>
  <div class="sp-grid">
   <button class="sp-tile" onclick="go('plan')"><span class="sp-ico"><img src="assets/study-pop/planning.webp" alt="" onerror="this.style.display=\x27none\x27"></span><b>Mon planning</b><small>Organiser mes devoirs et me concentrer</small></button>
   <button class="sp-tile" onclick="go('meth')"><span class="sp-ico"><img src="assets/study-pop/aides.webp" alt="" onerror="this.style.display=\x27none\x27"></span><b>Mes aides</b><small>Des méthodes pour toutes les disciplines</small></button>
@@ -250,11 +273,11 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 <!-- PLANNING -->
 <div id="s-plan" class="scr">
 <div class="stit">&#x1F4C5; Mon <span>planning</span></div>
-<div class="card"><div class="ct">Cette semaine</div><div class="wbar" id="wbar"></div></div>
+<div class="card"><div class="ct">1. Je regarde mes échéances</div><div class="wbar" id="wbar"></div></div>
 <div class="card">
-  <div class="ct">&#x1F4D6; Timer de travail</div>
+  <div class="ct">Je me concentre <span class="sp-help-note">Choisis une durée, puis lance ta séance</span></div>
   <div style="text-align:center;padding:6px 0;">
-    <span class="pg" id="pg">&#x1F4D6;</span>
+    <span class="pg" id="pg"><img src="assets/study-pop/minuteur.webp" alt="" class="sp-timer-art" onerror="this.style.display='none'"></span>
     <div class="pr" id="pr"><div class="pt" id="pt">25:00</div><div class="pl" id="pl">TRAVAIL</div></div>
     <div class="pbar"><div class="pf" id="pf" style="width:100%"></div></div>
   </div>
@@ -277,7 +300,7 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
   </div>
 </div>
 <div class="card">
-  <div class="ct">&#x2795; Ajouter un devoir</div>
+  <div class="ct">2. Je note un devoir</div><p class="sp-guide-text">Choisis la matière, décris précisément ce que tu dois faire, puis indique pour quand.</p>
   <div class="fg"><label>Mati&#xe8;re</label><div class="sgrid" id="add-pk"></div></div>
   <div class="fg"><label>Description</label><input type="text" id="hwdesc" placeholder="Ex : Exercice 5 p.42..."></div>
   <div class="fg">
@@ -288,7 +311,7 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
   <button class="btn bp bw" onclick="addHW()">&#x2705; Ajouter</button>
 </div>
 <div class="card">
-  <div class="ct">&#x1F4CB; Mes devoirs</div>
+  <div class="ct">3. Je passe à l’action</div><p class="sp-guide-text">Commence par une tâche, coche-la quand elle est finie, puis vérifie ce que tu as retenu.</p>
   <div class="tabs">
     <button class="tb active" onclick="fHW('all',this)">Tous</button>
     <button class="tb" onclick="fHW('today',this)">Aujourd'hui</button>
@@ -1153,7 +1176,7 @@ function exportMM(){
 }
 
 
-function spHome(){try{var hw=(S.hw||[]),done=hw.filter(function(h){return h.done;}).length,total=hw.length;var n=document.getElementById('sp-count'),bar=document.getElementById('sp-fill'),h=document.getElementById('sp-greeting');if(n)n.textContent=total?done+' devoir'+(done>1?'s':'')+' terminé'+(done>1?'s':'')+' sur '+total+' enregistrés.':'Ajoute ton premier devoir dans le planning pour commencer !';if(bar)bar.style.width=(total?Math.round(100*done/total):0)+'%';if(h)h.textContent='Bonjour'+(S.name?', '+S.name:'')+' !';}catch(e){console.warn('Study Pop summary',e);}}
+function spHome(){try{var hw=(S.hw||[]),pending=hw.filter(function(h){return !h.done;}),done=hw.filter(function(h){return h.done;}).length,total=hw.length;pending.sort(function(a,b){return (a.date||'9999-12-31').localeCompare(b.date||'9999-12-31');});var n=document.getElementById('sp-count'),bar=document.getElementById('sp-fill'),h=document.getElementById('sp-greeting'),next=document.getElementById('sp-next-task');if(n)n.textContent=total?done+' devoir'+(done>1?'s':'')+' terminé'+(done>1?'s':'')+' sur '+total+' enregistré'+(total>1?'s':'')+'.':'Tu n’as pas encore ajouté de devoir.';if(bar)bar.style.width=(total?Math.round(100*done/total):0)+'%';if(h)h.textContent='Bonjour'+(S.name?', '+S.name:'')+' !';if(next){next.textContent='';var p=document.createElement('p');if(pending.length){var task=pending[0],subject=gSub(task.sub);p.textContent=(subject?subject.l+' • ':'')+task.desc+(task.date?' — pour le '+fmtD(task.date):'');}else p.textContent=total?'Bravo, tous tes devoirs enregistrés sont terminés !':'Commence par ajouter ton premier devoir dans le planning.';next.appendChild(p);}}catch(e){console.warn('Study Pop summary',e);}}
 function init(){lS();updT();if(S.dys)document.body.classList.add('dys');buildDP();mkPk('add-pk',S.selS,function(id){S.selS=id;});mkMSubPk();rMG();mkPk('fc-pk',S.fcS,function(id){S.fcS=id;rFC(id);sS();});mkPk('qz-pk',S.qzS,function(id){S.qzS=id;startQZ(id);sS();});
   mkPk('perso-pk',S.persoS||'math',function(id){S.persoS=id;sS();rPersoList();rPersoFC();});rWeek();spHome();}
 document.addEventListener('DOMContentLoaded',init);
