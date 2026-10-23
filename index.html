@@ -355,7 +355,46 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 #mcbox .mcnt li{line-height:1.65}
 #mcbox .mcnt .mtip{background:#fff4dc;border-left:3px solid #e1b35a;padding:11px;border-radius:9px;color:#6a582f}
 @media(max-width:580px){.sp-method-coach{margin-top:15px}.sp-method-coach li{padding:9px}.sp-method-reflect{padding:12px}}
-.sp-topic-coach{margin-top:20px;padding-top:18px;border-top:2px solid #e1ebe7}.sp-topic-coach h3{color:#176f68;font:900 1.12rem Nunito,system-ui}.sp-topic-example,.sp-topic-mistake,.sp-topic-question{padding:14px;border-radius:14px;margin:12px 0;background:#fffefa;border:1px solid #e2e8e3}.sp-topic-example{border-left:4px solid #45aea2}.sp-topic-mistake{border-left:4px solid #edac7d}.sp-topic-question{background:#f0f8f5}.sp-topic-coach p{margin-top:8px;line-height:1.6}.sp-topic-options{display:grid;gap:8px;margin-top:12px}.sp-topic-options button{border:1px solid #d4e3df;border-radius:10px;background:white;min-height:42px;text-align:left;padding:10px;color:#263b50;cursor:pointer}.sp-topic-options button.sp-correct{background:#d9f4e6;border-color:#40a785}.sp-topic-options button.sp-incorrect{background:#ffe5e1;border-color:#dc8f87}.sp-topic-feedback{font-weight:700;color:#276f66}.sp-topic-options button:disabled{cursor:default}</style>
+.sp-topic-coach{margin-top:20px;padding-top:18px;border-top:2px solid #e1ebe7}.sp-topic-coach h3{color:#176f68;font:900 1.12rem Nunito,system-ui}.sp-topic-example,.sp-topic-mistake,.sp-topic-question{padding:14px;border-radius:14px;margin:12px 0;background:#fffefa;border:1px solid #e2e8e3}.sp-topic-example{border-left:4px solid #45aea2}.sp-topic-mistake{border-left:4px solid #edac7d}.sp-topic-question{background:#f0f8f5}.sp-topic-coach p{margin-top:8px;line-height:1.6}.sp-topic-options{display:grid;gap:8px;margin-top:12px}.sp-topic-options button{border:1px solid #d4e3df;border-radius:10px;background:white;min-height:42px;text-align:left;padding:10px;color:#263b50;cursor:pointer}.sp-topic-options button.sp-correct{background:#d9f4e6;border-color:#40a785}.sp-topic-options button.sp-incorrect{background:#ffe5e1;border-color:#dc8f87}.sp-topic-feedback{font-weight:700;color:#276f66}.sp-topic-options button:disabled{cursor:default}
+/* OBJECTIF DEVOIRS V3 — strong visual hierarchy and coaching */
+:root{--sp-v3-ink:#1d3449;--sp-v3-blue:#d6edff;--sp-v3-yellow:#fff0bd;--sp-v3-coral:#ffe0d8;--sp-v3-purple:#eee4ff;--sp-v3-green:#d9f5e7}
+.sp-summary{background:linear-gradient(125deg,#d7edff,#ebf8ff)!important;border:2px solid #70b7e7!important;border-radius:24px!important;box-shadow:0 8px 20px #24678a18!important}
+.sp-summary .sp-guide-kicker{color:#165e89}.sp-summary strong{color:var(--sp-v3-ink)}
+.sp-summary .sp-next-task{background:#fff!important;border:1px solid #8bbfdc!important;border-left:6px solid #2789b8!important}
+.sp-summary .sp-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.sp-summary .sp-actions button.sp-v3-main{background:#fb766b!important;color:#262f41!important;border:2px solid #e45b57!important;font-weight:950!important;font-size:1rem!important;padding:13px 18px!important;box-shadow:0 5px 0 #d45f59!important}
+.sp-v3-journey{padding:23px;background:#fffefa;border:2px solid #d4dedf;border-radius:23px;margin:20px 0 24px}
+.sp-v3-journey h2{font:900 1.45rem Nunito,system-ui;color:#20394d;margin:5px 0 18px}
+.sp-v3-route{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.sp-v3-step{cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;border:2px solid transparent;border-radius:17px;padding:13px 7px;min-height:145px;color:#20394d}
+.sp-v3-step span{display:grid;place-items:center;width:39px;height:39px;border-radius:50%;background:#fff;color:#17354b;font-size:1.15rem;font-weight:950;box-shadow:0 2px 6px #20394d22}
+.sp-v3-step strong{font-size:.91rem;font-weight:950}.sp-v3-step small{font-size:.73rem;color:#415768;line-height:1.3}
+.sp-v3-blue{background:var(--sp-v3-blue);border-color:#73b5e1}.sp-v3-yellow{background:var(--sp-v3-yellow);border-color:#e5b747}.sp-v3-coral{background:var(--sp-v3-coral);border-color:#ee9985}.sp-v3-purple{background:var(--sp-v3-purple);border-color:#bda7e4}.sp-v3-green{background:var(--sp-v3-green);border-color:#75c9a4}
+.sp-v3-step:focus-visible,.sp-v3-step:hover{transform:translateY(-2px);outline:3px solid #20394d;outline-offset:2px}
+.sp-v3-coach-prompt{background:#ffedba;color:#654611;border-left:5px solid #e1a12d;border-radius:11px;padding:12px 14px;margin:8px 0 18px;font-size:.83rem;font-weight:900;line-height:1.5;letter-spacing:.015em}
+.sp-homework{border:2px solid #d4e4e7!important;box-shadow:0 6px 18px #23455a16!important}
+.sp-homework-heading h3{font-size:1.08rem!important}.sp-homework-icon{background:#dceeff!important}
+.sp-v3-task-progress{margin:15px 0 8px}.sp-v3-task-progress>div:first-child{display:flex;justify-content:space-between;gap:10px;font-size:.8rem;color:#314858}
+.sp-v3-task-track{height:10px;border-radius:20px;background:#e9e9e5;overflow:hidden;margin-top:7px}.sp-v3-task-track span{display:block;height:100%;background:#36ab8e;border-radius:20px}
+.sp-v3-task-hint{background:#fff1cc;border-left:5px solid #e3b34b;padding:10px 12px;border-radius:9px;font-size:.83rem;font-weight:750;color:#715019;margin:11px 0}
+.sp-homework-actions .sp-primary-action{background:#f77870!important;border:2px solid #e7645c!important;font-size:1rem!important;font-weight:950!important;min-height:48px;flex:1 1 100%!important}
+.sp-homework-actions button:not(.sp-primary-action){background:#fffefa!important;border:1px solid #b8cfd0!important}
+#s-meth .sp-method-card{border:2px solid #e8be66!important;background:#fff6d9!important}
+#s-meth .sp-method-card:nth-child(even){background:#e3f4fd!important;border-color:#87bfdc!important}
+#mcbox .mcnt{background:#e6f2ff!important;border:2px solid #85b7dc!important}
+.sp-method-coach{background:#e3f5eb;border:2px solid #87cdaa;border-radius:17px;padding:17px;margin-top:16px}
+.sp-topic-example{background:#def3eb!important;border:2px solid #65bfa0!important}
+.sp-topic-mistake{background:#ffedca!important;border:2px solid #e7b75f!important}
+.sp-topic-question{background:#ffe2dc!important;border:2px solid #ecaa99!important}
+#s-rev #r-fc>.card{border:2px solid #d3a7e6;background:#f7efff}
+#s-rev #r-quiz>.card{border:2px solid #efa795;background:#fff3eb}
+#s-rev .qo{border:2px solid #b5d0d4!important;min-height:50px}
+#s-rev .qo.ok{border-color:#22986a!important;background:#d8f4e5!important}#s-rev .qo.no{border-color:#d75f58!important;background:#ffe1db!important}
+.sp-review-section{border:2px solid #89cfa9!important;background:#ecf9f1!important}
+.sp-review-buttons button:first-child{background:#257f70!important;color:white!important;border-color:#257f70!important}
+@media(max-width:810px){.sp-v3-route{grid-template-columns:repeat(3,minmax(0,1fr))}.sp-v3-step{min-height:125px}}
+@media(max-width:530px){.sp-v3-journey{padding:13px}.sp-v3-route{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.sp-v3-step{min-height:110px;padding:9px 5px}.sp-v3-step span{width:33px;height:33px}.sp-v3-step strong{font-size:.83rem}.sp-v3-step small{font-size:.69rem}.sp-summary .sp-actions button{flex:1 1 100%}.sp-v3-journey h2{font-size:1.25rem}}
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
@@ -384,7 +423,7 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 <!-- STUDY POP DASHBOARD -->
 <div id="s-home" class="scr active">
  <section class="sp-hero"><div><span class="sp-eyebrow">OBJECTIF DEVOIRS • STUDY POP</span><h1 id="sp-greeting">Prêt pour ta mission ?</h1><p>Un petit pas à la fois. Toutes tes matières au même endroit.</p></div><div class="sp-mascot" aria-hidden="true"><img src="assets/study-pop/mascotte.webp" alt="" onerror="this.outerHTML=\x27🐼\x27"></div></section>
- <section class="sp-summary" aria-label="Mon prochain devoir"><div class="sp-guide-kicker">MA PROCHAINE ÉTAPE</div><strong style="font:900 1.25rem Nunito,system-ui">Par quoi commencer ?</strong><p id="sp-count" class="sp-note">Retrouve tes devoirs et avance à ton rythme.</p><div id="sp-next-task" class="sp-next-task" aria-live="polite"></div><div class="sp-progress" aria-hidden="true"><div id="sp-fill" style="width:0%"></div></div><div class="sp-actions"><button onclick="go('plan')">Je gère mes devoirs →</button><button onclick="go('meth')">Je cherche une méthode</button></div></section><section class="sp-learning" aria-label="Apprendre à apprendre"><div class="sp-guide-kicker">MON PARCOURS D'APPRENTISSAGE</div><h2>Trois étapes pour avancer</h2><div class="sp-steps"><button onclick="go('plan')"><span>1</span><strong>Je m'organise</strong><small>Je choisis une tâche</small></button><button onclick="go('meth')"><span>2</span><strong>Je comprends</strong><small>Je trouve une méthode</small></button><button onclick="go('rev')"><span>3</span><strong>Je retiens</strong><small>Je me teste</small></button></div></section><section class="sp-review-section" aria-labelledby="sp-review-title"><div class="sp-review-head"><div><span class="sp-guide-kicker">MON CARNET DE RÉVISION</span><h2 id="sp-review-title">Ce que je dois revoir</h2><p>Les notions que tu as trouvées difficiles, dans toutes les matières.</p></div><img src="assets/study-pop/flashcards.webp" alt="" loading="lazy"></div><div id="sp-review-list" aria-live="polite"></div></section><div class="sp-tools-title">Tous mes outils <small>À utiliser quand j'en ai besoin</small></div>
+ <section class="sp-summary" aria-label="Mon prochain devoir"><div class="sp-guide-kicker">MA PROCHAINE ÉTAPE</div><strong style="font:900 1.25rem Nunito,system-ui">Par quoi commencer ?</strong><p id="sp-count" class="sp-note">Retrouve tes devoirs et avance à ton rythme.</p><div id="sp-next-task" class="sp-next-task" aria-live="polite"></div><div class="sp-progress" aria-hidden="true"><div id="sp-fill" style="width:0%"></div></div><div class="sp-actions"><button class="sp-v3-main" onclick="spStartNext()">▶ Commencer mon prochain devoir</button><button onclick="go('plan')">Voir tous mes devoirs</button></div></section><section class="sp-v3-journey" aria-labelledby="sp-v3-journey-title"><div class="sp-guide-kicker">TON CHEMIN PAS À PAS</div><h2 id="sp-v3-journey-title">5 étapes pour réussir tes devoirs</h2><div class="sp-v3-route"><button class="sp-v3-step sp-v3-blue" onclick="go('plan')"><span>1</span><strong>Je choisis</strong><small>Quel devoir faire ?</small></button><button class="sp-v3-step sp-v3-yellow" onclick="go('meth')"><span>2</span><strong>Je comprends</strong><small>Quelle méthode ?</small></button><button class="sp-v3-step sp-v3-coral" onclick="go('plan')"><span>3</span><strong>Je travaille</strong><small>Une étape à la fois</small></button><button class="sp-v3-step sp-v3-purple" onclick="go('rev')"><span>4</span><strong>Je me teste</strong><small>Qu'ai-je retenu ?</small></button><button class="sp-v3-step sp-v3-green" onclick="spScrollReview()"><span>5</span><strong>Je consolide</strong><small>Ce que je dois revoir</small></button></div></section><section class="sp-review-section" aria-labelledby="sp-review-title"><div class="sp-review-head"><div><span class="sp-guide-kicker">MON CARNET DE RÉVISION</span><h2 id="sp-review-title">Ce que je dois revoir</h2><p>Les notions que tu as trouvées difficiles, dans toutes les matières.</p></div><img src="assets/study-pop/flashcards.webp" alt="" loading="lazy"></div><div id="sp-review-list" aria-live="polite"></div></section><div class="sp-tools-title">Tous mes outils <small>À utiliser quand j'en ai besoin</small></div>
  <div class="sp-grid">
   <button class="sp-tile" onclick="go('plan')"><span class="sp-ico"><img src="assets/study-pop/planning.webp" alt="" onerror="this.style.display=\x27none\x27"></span><b>Mon planning</b><small>Organiser mes devoirs et me concentrer</small></button>
   <button class="sp-tile" onclick="go('meth')"><span class="sp-ico"><img src="assets/study-pop/aides.webp" alt="" onerror="this.style.display=\x27none\x27"></span><b>Mes aides</b><small>Des méthodes pour toutes les disciplines</small></button>
@@ -392,7 +431,7 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
   <button class="sp-tile" onclick="go('mind')"><span class="sp-ico"><img src="assets/study-pop/mindmap.webp" alt="" onerror="this.style.display=\x27none\x27"></span><b>MindMap Studio</b><small>Créer et exporter mes cartes mentales</small></button>
   <button class="sp-tile" onclick="go('prof')"><span class="sp-ico"><img src="assets/study-pop/recompenses.webp" alt="" onerror="this.style.display=\x27none\x27"></span><b>Mes récompenses</b><small>XP, badges et profil</small></button>
  </div>
- <p class="sp-note">Les cinq rubriques de la version précédente restent accessibles et fonctionnelles.</p>
+ 
 </div>
 
 <!-- PLANNING -->
@@ -436,7 +475,7 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
   <button class="btn bp bw" onclick="addHW()">&#x2705; Ajouter</button>
 </div>
 <div class="card">
-  <div class="ct">3. Je passe à l’action</div><p class="sp-guide-text">Commence par une tâche, coche-la quand elle est finie, puis vérifie ce que tu as retenu.</p>
+  <div class="ct">3. Je passe à l’action</div><div class="sp-v3-coach-prompt">CONSEIL DU COACH · Commence par un seul devoir. Relis la consigne, puis découpe le travail en étapes.</div><p class="sp-guide-text">Commence par une tâche, coche-la quand elle est finie, puis vérifie ce que tu as retenu.</p>
   <div class="tabs">
     <button class="tb active" onclick="fHW('all',this)">Tous</button>
     <button class="tb" onclick="fHW('today',this)">Aujourd'hui</button>
@@ -450,7 +489,7 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 <div id="s-meth" class="scr">
 <div class="stit">Mes <span>méthodes</span></div><p class="sp-section-intro">Choisis ta matière puis une stratégie. L’objectif est de comprendre comment travailler, pas de recopier une réponse.</p>
 <div class="card">
-  <div class="ct">Dans quelle matière as-tu besoin d’aide ?</div>
+  <div class="ct">Dans quelle matière as-tu besoin d’aide ?</div><div class="sp-v3-coach-prompt">1. CHOISIS TA MATIÈRE · 2. OUVRE UNE FICHE · 3. ESSAIE L’ACTIVITÉ</div>
   <div class="msubpk" id="msubpk"></div>
   <div class="mgrid" id="mgrid"></div>
   <div id="mcbox"></div>
@@ -469,7 +508,7 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 </div>
 <div id="r-fc">
   <div class="card">
-    <div class="ct">1. Je m’entraîne à retrouver une réponse</div><p class="sp-rev-note">Lis la question, essaie de répondre sans regarder, retourne la carte, puis indique si tu savais.</p>
+    <div class="ct">1. Je m’entraîne à retrouver une réponse</div><div class="sp-v3-coach-prompt">LIS → RÉPONDS DANS TA TÊTE → RETOURNE LA CARTE → INDIQUE SI TU SAVAIS</div><p class="sp-rev-note">Lis la question, essaie de répondre sans regarder, retourne la carte, puis indique si tu savais.</p>
     <div class="sgrid" id="fc-pk"></div>
     <button class="btn bp bsm" onclick="startIrregVerbs(0)" style="width:100%;margin-bottom:10px;">Anglais : série spéciale des 200 verbes irréguliers</button>
     <div id="fcz"><div class="empty"><div class="ei">&#x1F0CF;</div><p>Choisis une mati&#xe8;re</p></div></div>
@@ -477,7 +516,7 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 </div>
 <div id="r-quiz" style="display:none;">
   <div class="card">
-    <div class="ct">2. Je vérifie mes connaissances</div><p class="sp-rev-note">Choisis une discipline. Réponds aux questions avant de consulter la correction et ton résultat.</p>
+    <div class="ct">2. Je vérifie mes connaissances</div><div class="sp-v3-coach-prompt">LIS LA QUESTION → CHOISIS UNE RÉPONSE → REGARDE LA CORRECTION → CONTINUE</div><p class="sp-rev-note">Choisis une discipline. Réponds aux questions avant de consulter la correction et ton résultat.</p>
     <div class="sgrid" id="qz-pk"></div>
     <div id="qz"><div class="empty"><div class="ei">&#x2753;</div><p>Choisis une mati&#xe8;re</p></div></div>
   </div>
@@ -821,6 +860,8 @@ function spSteps(h){if(!Array.isArray(h.steps))h.steps=[];return h.steps;}
 function spAddStep(id){var h=S.hw.find(function(x){return x.id===id});if(!h)return;var e=document.getElementById('sp-step-'+id),v=e&&e.value.trim();if(!v)return;spSteps(h).push({text:v,done:false});sS();rHW(curF);}
 function spToggleStep(id,i){var h=S.hw.find(function(x){return x.id===id});if(!h||!spSteps(h)[i])return;h.steps[i].done=!h.steps[i].done;sS();rHW(curF);}
 function spRemoveStep(id,i){var h=S.hw.find(function(x){return x.id===id});if(!h)return;spSteps(h).splice(i,1);sS();rHW(curF);}
+function spStartNext(){var h=(S.hw||[]).filter(function(x){return !x.done;}).sort(function(a,b){return (a.date||'9999-12-31').localeCompare(b.date||'9999-12-31');})[0];if(h)spStartHomework(h.id);else go('plan');}
+function spScrollReview(){go('home');var el=document.getElementById('sp-review-title');if(el)el.scrollIntoView({behavior:'smooth',block:'center'});}
 function spStartHomework(id){var h=S.hw.find(function(x){return x.id===id});if(!h)return;window.spWorkingId=id;go('plan');var t=document.getElementById('sp-current-work');if(t){t.textContent=gSub(h.sub).l+' — '+h.desc;t.hidden=false;}document.getElementById('sp-focus')?.scrollIntoView({behavior:'smooth',block:'center'});}
 function spMethodFor(id){var h=S.hw.find(function(x){return x.id===id});if(!h)return;S.methS=h.sub;sS();mkMSubPk();rMG();go('meth');}
 function spToggleDetail(id){var el=document.getElementById('sp-detail-'+id);if(el){el.hidden=!el.hidden;}}
@@ -836,7 +877,7 @@ function rHW(f){
  var sub=gSub(h.sub),late=h.date&&h.date<tISO()&&!h.done,steps=spSteps(h),finished=steps.filter(function(x){return x.done;}).length;
  var stepHtml=steps.map(function(x,i){return '<div class="sp-task-step"><label><input type="checkbox" '+(x.done?'checked ':'')+'onchange="spToggleStep('+h.id+','+i+')"><span>'+spEsc(x.text)+'</span></label><button aria-label="Supprimer cette étape" title="Supprimer cette étape" onclick="spRemoveStep('+h.id+','+i+')">×</button></div>';}).join('');
  return '<article class="sp-homework"><header><div class="sp-homework-icon">'+subjectIcon(h.sub)+'</div><div class="sp-homework-heading"><div class="sp-homework-sub">'+spEsc(sub.l)+'</div><h3>'+spEsc(h.desc)+'</h3><p class="'+(late?'sp-overdue':'')+'">'+(h.date?'Pour le '+spEsc(fmtD(h.date)):'Sans date')+(late?' · À reprogrammer':'')+'</p></div><button class="sp-small-delete" onclick="delHW('+h.id+')" aria-label="Supprimer ce devoir" title="Supprimer ce devoir">×</button></header>'+
- '<div class="sp-homework-actions">'+(h.done?'':'<button class="sp-primary-action" onclick="spStartHomework('+h.id+')">▶ Commencer</button>')+'<button onclick="spToggleDetail('+h.id+')">☷ Mes étapes'+(steps.length?' ('+finished+'/'+steps.length+')':'')+'</button><button onclick="spMethodFor('+h.id+')">? Une méthode</button><button onclick="togHW('+h.id+')">'+(h.done?'↺ À refaire':'✓ Terminé')+'</button></div>'+
+ '<div class="sp-v3-task-progress"><div><strong>Ma progression</strong><span>'+finished+'/'+steps.length+' étapes</span></div><div class="sp-v3-task-track"><span style="width:'+(steps.length?Math.round(finished/steps.length*100):0)+'%"></span></div></div><div class="sp-v3-task-hint">'+(h.done?'Devoir terminé · fais le point sur ce que tu as retenu.':steps.length?'Prochaine action : '+spEsc((steps.find(function(x){return !x.done;})||{text:'Vérifier le travail'}).text):'Prochaine action : ajoute tes petites étapes, puis commence.')+'</div><div class="sp-homework-actions">'+(h.done?'':'<button class="sp-primary-action" onclick="spStartHomework('+h.id+')">▶ Commencer</button>')+'<button onclick="spToggleDetail('+h.id+')">☷ Mes étapes'+(steps.length?' ('+finished+'/'+steps.length+')':'')+'</button><button onclick="spMethodFor('+h.id+')">? Une méthode</button><button onclick="togHW('+h.id+')">'+(h.done?'↺ À refaire':'✓ Terminé')+'</button></div>'+
  '<div class="sp-homework-detail" id="sp-detail-'+h.id+'" hidden><p>Découpe ton devoir en petites actions. Tu peux les cocher une par une.</p>'+stepHtml+'<div class="sp-step-add"><input id="sp-step-'+h.id+'" type="text" maxlength="150" aria-label="Nouvelle étape" placeholder="Ex. Relire la consigne" onkeydown="if(event.key===\'Enter\')spAddStep('+h.id+')"><button onclick="spAddStep('+h.id+')">+ Ajouter une étape</button></div></div></article>';
  }).join('');
 }
