@@ -638,9 +638,7 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
     <br>
     <button id="reward-close" onclick="closeReward()">Super !</button>
   </div>
-
-
-
+</div>
 
 <script>
 
@@ -965,7 +963,7 @@ function rProf(){var lv=getLv(S.xp);var btn2=document.getElementById('dysbtn2');
 function savNm(){S.name=document.getElementById('uname').value;sS();}
 function confirmReset(btn){if(btn.dataset.confirm){resetAll();return;}btn.dataset.confirm="1";btn.textContent="Confirmer la suppression ?";btn.style.fontWeight="900";setTimeout(function(){btn.textContent="\uD83D\uDDD1 R\u00e9initialiser tout";delete btn.dataset.confirm;},3000);}
 function resetAll(){localStorage.removeItem('gbhub8');location.reload();}
-function rM(m,btn){['fc','quiz','perso','prog'].forEach(function(x){document.getElementById('r-'+x).style.display=x===m?'block':'none';});document.querySelectorAll('#s-rev .tb').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');if(m==='prog')rProg();if(m==='perso'){mkPk('perso-pk',S.persoS,function(id){S.persoS=id;sS();rPersoList();rPersoFC();});rPersoList();rPersoFC();}}
+function rM(m,btn){['fc','quiz','perso','prog'].forEach(function(x){document.getElementById('r-'+x).style.display=x===m?'block':'none';});document.querySelectorAll('#s-rev .tb').forEach(function(b){b.classList.remove('active');});if(btn)btn.classList.add('active');if(m==='prog')rProg();if(m==='perso'){mkPk('perso-pk',S.persoS,function(id){S.persoS=id;sS();rPersoList();rPersoFC();});rPersoList();rPersoFC();}}
 function tDys(){document.body.classList.toggle('dys');var on=document.body.classList.contains('dys');var btn=document.getElementById('dysbtn');btn.textContent=on?'Dys \u2713':'Dys';if(on){btn.classList.add('dys-on');}else{btn.classList.remove('dys-on');}var btn2=document.getElementById('dysbtn2');if(btn2){btn2.textContent=on?'Dys \u2713':'Dys';if(on)btn2.classList.add('dys-on');else btn2.classList.remove('dys-on');}S.dys=on;sS();if(on&&!S.dysInfoShown){S.dysInfoShown=true;sS();var el=document.getElementById('xpn');el.textContent='\uD83D\uDCD6 Mode Dys activ\u00e9 !';el.classList.add('show');setTimeout(function(){el.classList.remove('show');},2500);}}
 
 // ── FLASHCARDS PERSONNELLES ──
