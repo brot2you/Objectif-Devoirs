@@ -236,6 +236,34 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 .sp-subject-icon{height:37px;width:40px;object-fit:contain;vertical-align:middle;flex-shrink:0}
 .sp-subject-label{font-weight:800}
 @media(max-width:620px){#add-pk .chip,#fc-pk .chip,#qz-pk .chip,#perso-pk .chip,#msubpk .msubchip{padding:7px 9px;min-width:84px;flex-direction:column;gap:3px}.sp-subject-icon{width:43px;height:43px}.sp-subject-label{font-size:.74rem}}
+
+/* STUDY POP V2.3 — homework workspaces */
+.sp-homework{background:#fffefa;border:1px solid #e8e4e0;border-radius:20px;padding:17px;margin:12px 0;box-shadow:0 4px 15px #263b500c}
+.sp-homework header{display:flex;align-items:center;gap:13px}
+.sp-homework-icon{flex:0 0 60px;width:60px;height:60px;display:grid;place-items:center;background:#faf5ee;border-radius:16px;font-size:1.8rem}
+.sp-homework-icon img{max-width:52px;max-height:52px;object-fit:contain}
+.sp-homework-heading{min-width:0;flex:1}.sp-homework-heading h3{font:900 1rem Nunito,system-ui;color:#263b50;overflow-wrap:anywhere;margin:1px 0}
+.sp-homework-heading p{font-size:.77rem;color:#6a7583}
+.sp-homework-sub{font-size:.72rem;color:#248d88;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.sp-homework-heading .sp-overdue{color:#a44c39}
+.sp-homework-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.sp-homework-actions button,.sp-step-add button{font:800 .78rem Nunito,system-ui;border:1px solid #e0e4e4;background:#f5f7f7;color:#263b50;cursor:pointer;border-radius:11px;padding:9px 12px;min-height:38px}
+.sp-homework-actions .sp-primary-action{background:#ff817b;border-color:#ef7771;color:#263b50}
+.sp-homework-actions button:hover,.sp-step-add button:hover{filter:brightness(.96)}
+.sp-small-delete,.sp-task-step button{background:none;border:none;color:#946b67;font-size:1.35rem;cursor:pointer;min-width:30px;min-height:35px}
+.sp-homework-detail{background:#f9f8f4;border-radius:14px;margin-top:15px;padding:13px}
+.sp-homework-detail>p{font-size:.8rem;color:#637382;margin-bottom:10px}
+.sp-task-step{display:flex;justify-content:space-between;gap:8px;align-items:center;margin:7px 0;background:white;border:1px solid #eceae6;padding:5px 9px;border-radius:10px}
+.sp-task-step label{display:flex;align-items:center;gap:8px;margin:0;flex:1;color:#263b50;font-size:.86rem;overflow-wrap:anywhere;font-weight:550}
+.sp-task-step input{width:18px;height:18px;flex:none;accent-color:#39a99b}
+.sp-task-step input:checked+span{text-decoration:line-through;opacity:.6}
+.sp-step-add{display:flex;gap:7px;flex-wrap:wrap}.sp-step-add input{flex:1 1 160px;width:auto;background:white}
+.sp-working{color:#176f68;background:#e7f5ef;border-radius:10px;padding:8px 12px;font-weight:700;font-size:.84rem;text-align:center;margin:6px}
+.sp-no-tasks{background:#eef7f4;border-radius:15px;padding:20px;text-align:center;color:#263b50}.sp-no-tasks p{font-size:.85rem;margin-top:6px}
+#s-plan .tabs,#s-rev .tabs{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+#s-plan .tb,#s-rev .tb{border:1px solid #dce6e4;border-radius:12px;padding:10px 13px;background:#fffefa;color:#526879;font-weight:750;cursor:pointer}
+#s-plan .tb.active,#s-rev .tb.active{background:#e1f5f0;color:#176f68;border-color:#7dc9bf}
+@media(max-width:600px){.sp-homework{padding:13px}.sp-homework-icon{width:49px;height:49px;flex-basis:49px}.sp-homework-icon img{max-width:44px}.sp-homework-actions button{flex:1 1 42%;padding:8px 5px}.sp-homework-heading h3{font-size:.94rem}}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -281,13 +309,13 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 <div class="stit">&#x1F4C5; Mon <span>planning</span></div>
 <div class="card"><div class="ct">1. Je regarde mes échéances</div><div class="wbar" id="wbar"></div></div>
 <div class="card">
-  <div class="ct">Je me concentre <span class="sp-help-note">Choisis une durée, puis lance ta séance</span></div>
+  <div id="sp-focus"></div><div class="ct">Je me concentre <span class="sp-help-note">Choisis une durée, puis lance ta séance</span></div>
   <div style="text-align:center;padding:6px 0;">
     <span class="pg" id="pg"><img src="assets/study-pop/minuteur.webp" alt="" class="sp-timer-art" onerror="this.style.display='none'"></span>
     <div class="pr" id="pr"><div class="pt" id="pt">25:00</div><div class="pl" id="pl">TRAVAIL</div></div>
     <div class="pbar"><div class="pf" id="pf" style="width:100%"></div></div>
   </div>
-  <div class="ppr">
+  <p id="sp-current-work" class="sp-working" hidden></p><div class="ppr">
     <button class="ppb act" onclick="pPre(25,this)">&#x26A1; 25 min</button>
     <button class="ppb" onclick="pPre(45,this)">45 min</button>
     <button class="ppb" onclick="pPre(60,this)">1h</button>
@@ -684,7 +712,31 @@ function togHW(id){var hw=S.hw.find(function(x){return x.id===id;});if(!hw)retur
 function delHW(id){S.hw=S.hw.filter(function(h){return h.id!==id;});sS();rHW(curF);rWeek();}
 var curF='all';
 function fHW(f,btn){curF=f;document.querySelectorAll('#s-plan .tb').forEach(function(b){b.classList.remove('active');});if(btn)btn.classList.add('active');rHW(f);}
-function rHW(f){var list=S.hw;if(f==='today')list=list.filter(function(h){return !h.done&&(h.date===tISO()||!h.date);});else if(f==='done')list=list.filter(function(h){return h.done;});else list=list.filter(function(h){return !h.done;});var c=document.getElementById('hwlist');if(!list.length){c.innerHTML='<div class="empty"><div class="ei">🎉</div><p>Rien ici !</p></div>';return;}c.innerHTML=list.map(function(h){var s=gSub(h.sub);var u=h.date&&h.date<=tISO()&&!h.done;return '<div class="hwi'+(h.done?' done':'')+'"><div class="hwck'+(h.done?' chk':'')+'" onclick="togHW('+h.id+')">'+(h.done?'\u2713':'')+'</div><div class="hwinfo"><div class="hwt">'+s.e+' <span style="color:'+s.c+';font-weight:700;">'+s.l+'</span> \u2014 '+h.desc+'</div><div class="hwm'+(u?' hwu':'')+'">'+( h.date?'📅 '+fmtD(h.date):'📅 Sans date')+(u?' \u26a0\ufe0f Urgent':'')+'</div></div><button class="db" onclick="delHW('+h.id+')">🗑</button></div>';}).join('');}
+
+function spEsc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function spSteps(h){if(!Array.isArray(h.steps))h.steps=[];return h.steps;}
+function spAddStep(id){var h=S.hw.find(function(x){return x.id===id});if(!h)return;var e=document.getElementById('sp-step-'+id),v=e&&e.value.trim();if(!v)return;spSteps(h).push({text:v,done:false});sS();rHW(curF);}
+function spToggleStep(id,i){var h=S.hw.find(function(x){return x.id===id});if(!h||!spSteps(h)[i])return;h.steps[i].done=!h.steps[i].done;sS();rHW(curF);}
+function spRemoveStep(id,i){var h=S.hw.find(function(x){return x.id===id});if(!h)return;spSteps(h).splice(i,1);sS();rHW(curF);}
+function spStartHomework(id){var h=S.hw.find(function(x){return x.id===id});if(!h)return;window.spWorkingId=id;go('plan');var t=document.getElementById('sp-current-work');if(t){t.textContent=gSub(h.sub).l+' — '+h.desc;t.hidden=false;}document.getElementById('sp-focus')?.scrollIntoView({behavior:'smooth',block:'center'});}
+function spMethodFor(id){var h=S.hw.find(function(x){return x.id===id});if(!h)return;S.methS=h.sub;sS();mkMSubPk();rMG();go('meth');}
+function spToggleDetail(id){var el=document.getElementById('sp-detail-'+id);if(el){el.hidden=!el.hidden;}}
+function rHW(f){
+ var list=S.hw.slice();
+ if(f==='today')list=list.filter(function(h){return !h.done&&(h.date===tISO()||!h.date);});
+ else if(f==='done')list=list.filter(function(h){return h.done;});
+ else list=list.filter(function(h){return !h.done;});
+ list.sort(function(a,b){return (a.date||'9999-12-31').localeCompare(b.date||'9999-12-31')});
+ var c=document.getElementById('hwlist');if(!c)return;
+ if(!list.length){c.innerHTML='<div class="sp-no-tasks"><strong>Tout est prêt !</strong><p>Aucun devoir dans cette catégorie. Ajoute une tâche ou consulte tes révisions.</p></div>';return;}
+ c.innerHTML=list.map(function(h){
+ var sub=gSub(h.sub),late=h.date&&h.date<tISO()&&!h.done,steps=spSteps(h),finished=steps.filter(function(x){return x.done;}).length;
+ var stepHtml=steps.map(function(x,i){return '<div class="sp-task-step"><label><input type="checkbox" '+(x.done?'checked ':'')+'onchange="spToggleStep('+h.id+','+i+')"><span>'+spEsc(x.text)+'</span></label><button aria-label="Supprimer cette étape" title="Supprimer cette étape" onclick="spRemoveStep('+h.id+','+i+')">×</button></div>';}).join('');
+ return '<article class="sp-homework"><header><div class="sp-homework-icon">'+subjectIcon(h.sub)+'</div><div class="sp-homework-heading"><div class="sp-homework-sub">'+spEsc(sub.l)+'</div><h3>'+spEsc(h.desc)+'</h3><p class="'+(late?'sp-overdue':'')+'">'+(h.date?'Pour le '+spEsc(fmtD(h.date)):'Sans date')+(late?' · À reprogrammer':'')+'</p></div><button class="sp-small-delete" onclick="delHW('+h.id+')" aria-label="Supprimer ce devoir" title="Supprimer ce devoir">×</button></header>'+
+ '<div class="sp-homework-actions">'+(h.done?'':'<button class="sp-primary-action" onclick="spStartHomework('+h.id+')">▶ Commencer</button>')+'<button onclick="spToggleDetail('+h.id+')">☷ Mes étapes'+(steps.length?' ('+finished+'/'+steps.length+')':'')+'</button><button onclick="spMethodFor('+h.id+')">? Une méthode</button><button onclick="togHW('+h.id+')">'+(h.done?'↺ À refaire':'✓ Terminé')+'</button></div>'+
+ '<div class="sp-homework-detail" id="sp-detail-'+h.id+'" hidden><p>Découpe ton devoir en petites actions. Tu peux les cocher une par une.</p>'+stepHtml+'<div class="sp-step-add"><input id="sp-step-'+h.id+'" type="text" maxlength="150" aria-label="Nouvelle étape" placeholder="Ex. Relire la consigne" onkeydown="if(event.key===\'Enter\')spAddStep('+h.id+')"><button onclick="spAddStep('+h.id+')">+ Ajouter une étape</button></div></div></article>';
+ }).join('');
+}
 function rWeek(){var bar=document.getElementById('wbar');var today=new Date();var dow=(today.getDay()+6)%7;var mon=new Date(today);mon.setDate(today.getDate()-dow);bar.innerHTML=DAY_LBL.map(function(d,i){var dt=new Date(mon);dt.setDate(mon.getDate()+i);var iso=dt.toISOString().split('T')[0];var n=S.hw.filter(function(h){return h.date===iso&&!h.done;}).length;var isT=dt.toDateString()===today.toDateString();var isA=selDay===iso;return '<div class="dc'+(isT?' tod':'')+(isA?' aday':'')+'" onclick="clickDay(\''+iso+'\')"><div class="dn">'+d+'</div><div class="dv">'+(n||'\u2014')+'</div><div class="lb" style="width:'+Math.min(n*33,100)+'%"></div></div>';}).join('');rHW(curF);}
 function tISO(){return new Date().toISOString().split('T')[0];}
 function fmtD(iso){var d=new Date(iso+'T00:00:00');return d.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});}
