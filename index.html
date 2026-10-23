@@ -294,6 +294,26 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 .sp-friendly-empty{background:#f4f8f7;border:1px dashed #b3d8cf;padding:24px;text-align:center;border-radius:18px}.sp-friendly-empty p{font-size:.82rem;margin-top:5px;color:#637382}
 @media(max-width:600px){#s-meth .mgrid{grid-template-columns:1fr 1fr}#s-meth .sp-method-card{padding:12px;min-height:130px}#s-rev .chip,#s-meth .msubchip{padding:7px 9px}#s-rev .sp-subject-icon,#s-meth .sp-subject-icon{height:30px;width:30px}}
 
+
+/* Study Pop V2.5 final polish */
+.sp-quiz-result{max-width:560px;margin:18px auto;padding:26px 24px;text-align:center;background:linear-gradient(150deg,#fff9ed,#f0fbf6);border:1px solid #e1ebe5;border-radius:26px;box-shadow:0 9px 25px #263b5011}
+.sp-result-art{width:96px;height:96px;object-fit:contain;display:block;margin:0 auto 12px}
+.sp-result-eyebrow{display:block;text-transform:uppercase;color:#328f85;font-weight:900;letter-spacing:.08em;font-size:.73rem}
+.sp-quiz-result h2{font:900 1.55rem Nunito,system-ui;color:#263b50;margin:8px 0}
+.sp-result-score{font:900 2rem Nunito,system-ui;color:#249387;margin:9px 0}.sp-result-score span{font-size:.9rem;font-weight:600;color:#607186}
+.sp-result-advice{font-size:.89rem;color:#536778;line-height:1.6;margin:14px 0}
+.sp-result-actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
+.sp-result-actions button{min-height:43px}
+.sp-card-count{font-weight:800;font-size:.82rem;color:#5f7080;margin:14px 0 8px}
+.sp-personal-row{border:1px solid #e9e4df;background:#fffefa;padding:13px 15px;border-radius:15px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:9px}
+.sp-personal-row div{min-width:0;overflow-wrap:anywhere}.sp-personal-row strong{color:#263b50;font-size:.92rem}.sp-personal-row p{font-size:.81rem;color:#617386;margin-top:4px}
+.sp-personal-study{background:#fbfaf5;border-radius:20px;padding:18px 15px;margin:18px 0}.sp-personal-study h3{font:900 1.1rem Nunito,system-ui;color:#263b50;margin-bottom:6px}
+.sp-personal-study .fcard{max-width:520px;margin:14px auto}
+#reward-modal .reward-box,#reward-modal .reward-card,#reward-modal .rbox{max-width:min(92vw,480px);box-sizing:border-box;border-radius:24px}
+#reward-modal{z-index:10000}
+#s-rev input,#s-rev textarea,#s-rev button,#s-meth button{max-width:100%;box-sizing:border-box}
+@media(max-width:600px){#s-rev .card,#s-meth .card{padding:14px}.sp-quiz-result{padding:19px 13px}.sp-result-actions button{flex:1 1 150px}.sp-personal-study{padding:13px 9px}.sp-personal-study .sp-recall-actions{gap:6px}.sp-personal-study .sp-recall-actions button{min-width:0;padding:9px 11px}#s-rev .fg{min-width:0}#s-rev #perso-q,#s-rev #perso-a{min-width:0;width:100%}#s-rev #r-perso .fg+div{flex-wrap:wrap!important}#s-rev #r-perso .fg+div input{flex:1 1 160px!important}#reward-modal .reward-box{margin:12px}}
+@media(prefers-reduced-motion:reduce){#reward-modal *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -422,7 +442,7 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 </div>
 <div id="r-perso" style="display:none;">
   <div class="card">
-    <div class="ct">Mes cartes de révision personnalisées</div>
+    <div class="ct">Mes cartes de révision personnalisées</div><p class="sp-rev-note">Une notion par carte : formule une question courte et une réponse précise.</p>
     <div class="fg"><label>Mati&#xe8;re</label><div class="sgrid" id="perso-pk"></div></div>
     <div style="display:flex;gap:8px;margin-bottom:12px;">
       <input type="text" id="perso-q" placeholder="Question..." style="flex:1;">
@@ -840,7 +860,7 @@ function startQZ(sid){var qs=QZ[sid];if(!qs||!qs.length){document.getElementById
 function rQQ(){var s=S.qzSt;if(!s||s.i>=s.q.length){rQRes();return;}var q=s.q[s.i];document.getElementById('qz').innerHTML='<div style="margin-bottom:12px;"><div style="font-size:var(--xs);color:var(--muted);font-weight:700;">Q'+(s.i+1)+'/'+s.q.length+'</div><div style="font-weight:700;margin-top:6px;">'+q.q+'</div></div>'+q.o.map(function(o,i){return '<div class="qo" id="qo'+i+'" onclick="ansQ('+i+')">'+o+'</div>';}).join('')+'<button id="qnxt" class="btn bs bsm" style="display:none;margin-top:10px;" onclick="nxtQ()">Suivant &#8594;</button>';}
 function ansQ(c){var s=S.qzSt;var q=s.q[s.i];document.querySelectorAll('.qo').forEach(function(el,i){el.onclick=null;if(i===q.a)el.classList.add('ok');else if(i===c&&c!==q.a)el.classList.add('no');});if(c===q.a){s.sc++;S.prog[s.sid]=Math.min(100,(S.prog[s.sid]||0)+8);addXP(10,'Bonne r\u00e9ponse !');}else addXP(2);S.quizD=(S.quizD||0)+1;document.getElementById('qnxt').style.display='inline-flex';}
 function nxtQ(){S.qzSt.i++;rQQ();}
-function rQRes(){var s=S.qzSt;var p=Math.round(s.sc/s.q.length*100);document.getElementById('qz').innerHTML='<div style="text-align:center;padding:20px 0;"><div style="font-size:3rem;">'+(p>=80?'👻':'💪')+'</div><div style="font-weight:900;font-size:var(--xxl);color:var(--slime);">'+s.sc+'/'+s.q.length+'</div><div style="color:var(--muted);margin:8px 0;">'+p+'%</div><div style="font-weight:700;">'+(p>=80?'Excellent !':p>=50?'Pas mal ! Continue':'Relis le cours')+'</div><button class="btn bp" style="margin-top:16px;" onclick="startQZ(\''+s.sid+'\')">Rejouer</button></div>';sS();}
+function rQRes(){var q=S.qzSt;if(!q||!q.q||!q.q.length)return;var p=Math.round(q.sc/q.q.length*100),msg=p>=80?'Très bon travail !':p>=50?'Tu progresses !':'Chaque essai aide à apprendre.';document.getElementById('qz').innerHTML='<section class="sp-quiz-result" aria-label="Résultat du quiz"><img src="assets/study-pop/recompenses.webp" alt="" class="sp-result-art"><span class="sp-result-eyebrow">Mon bilan</span><h2>'+msg+'</h2><p class="sp-result-score">'+q.sc+' <span>/ '+q.q.length+' réponses correctes</span></p><div class="sp-study-track"><div style="width:'+p+'%"></div></div><p class="sp-result-advice">'+(p>=80?'Essaie de reformuler ce que tu as appris sans regarder.':p>=50?'Revois les points hésitants, puis retente quelques questions.':'Consulte une méthode ou tes cartes mémoire avant de recommencer.')+'</p><div class="sp-result-actions"><button class="btn bp" onclick="startQZ(\''+q.sid+'\')">Recommencer le quiz</button><button class="btn bs" onclick="go(\'meth\')">Voir les méthodes</button></div></section>';sS();}
 function rProg(){var b=document.getElementById('pbars');var sbs=SUBS.filter(function(s){return S.prog[s.id];});b.innerHTML=sbs.length?sbs.map(function(s){return '<div class="prow"><div class="psub">'+s.e+' '+s.l+'</div><div class="pbw"><div class="pb" style="width:'+(S.prog[s.id]||0)+'%"></div></div><div class="ppc">'+(S.prog[s.id]||0)+'%</div></div>';}).join(''):'<div class="empty"><div class="ei">📊</div><p>Fais des quiz pour voir ta progression !</p></div>';document.getElementById('bdgr').innerHTML=BDGS.map(function(b){var u=S.badges.includes(b.id);var desc=b.desc?'<div style="font-size:.58rem;color:var(--muted);margin-top:2px;text-align:center;line-height:1.3;">'+b.desc+'</div>':'';var lock=u?'<div style="font-size:.6rem;color:var(--sauge2);">\u2713</div>':'<div style="font-size:.65rem;color:rgba(255,255,255,.18);">\uD83D\uDD12</div>';return '<div class="bi'+(u?'':' lk')+'"><div class="bic">'+b.ic+'</div><div class="bin">'+b.n+'</div>'+desc+lock+'</div>';}).join('');}
 function rProf(){var lv=getLv(S.xp);var btn2=document.getElementById('dysbtn2');if(btn2){btn2.textContent=S.dys?'Dys \u2713':'Dys';if(S.dys)btn2.classList.add('dys-on');else btn2.classList.remove('dys-on');}var btn2=document.getElementById('dysbtn2');if(btn2){btn2.textContent=S.dys?'Dys ✓':'Dys';if(S.dys)btn2.classList.add('dys-on');else btn2.classList.remove('dys-on');}document.getElementById('pxp').textContent=S.xp+' XP';document.getElementById('plvl').textContent=lv[1];document.getElementById('pavat').textContent=lv[2];document.getElementById('pstr').textContent=S.streak+' jour(s)';var dh=S.hw.filter(function(h){return h.done;}).length;document.getElementById('pstats').innerHTML='<div class="prow"><div class="psub">Devoirs</div><div style="flex:1;font-weight:700;">'+dh+'/'+S.hw.length+' faits</div></div><div class="prow"><div class="psub">Timers</div><div style="flex:1;font-weight:700;">'+(S.pomoDone||0)+'</div></div><div class="prow"><div class="psub">Flashcards</div><div style="flex:1;font-weight:700;">'+(S.flashD||0)+'</div></div><div class="prow"><div class="psub">Quiz</div><div style="flex:1;font-weight:700;">'+(S.quizD||0)+'</div></div>';document.getElementById('bdgp').innerHTML=BDGS.map(function(b){var u=S.badges.includes(b.id);var desc=b.desc?'<div style="font-size:.58rem;color:var(--muted);margin-top:2px;text-align:center;line-height:1.3;">'+b.desc+'</div>':'';var lock=u?'<div style="font-size:.6rem;color:var(--sauge2);">\u2713</div>':'<div style="font-size:.65rem;color:rgba(255,255,255,.18);">\uD83D\uDD12</div>';return '<div class="bi'+(u?'':' lk')+'"><div class="bic">'+b.ic+'</div><div class="bin">'+b.n+'</div>'+desc+lock+'</div>';}).join('');var ni=document.getElementById('uname');if(ni&&S.name)ni.value=S.name;}
 function savNm(){S.name=document.getElementById('uname').value;sS();}
@@ -867,38 +887,8 @@ function delPersoCard(sid,id){
   S.persoCards[sid]=S.persoCards[sid].filter(function(c){return c.id!==id;});
   sS();rPersoList();rPersoFC();
 }
-function rPersoList(){
-  var sid=S.persoS||'autre';
-  var cards=S.persoCards[sid]||[];
-  var c=document.getElementById('perso-list');
-  if(!c)return;
-  if(!cards.length){c.innerHTML='<div class="empty" style="padding:16px 0;"><p>Aucune carte pour cette mati\u00e8re. Ajoutes-en une !</p></div>';return;}
-  c.innerHTML='<div style="margin-bottom:14px;"><div style="font-size:var(--xs);color:var(--muted);margin-bottom:8px;font-weight:700;">'+cards.length+' carte(s) enregistr\u00e9e(s)</div>'+
-  cards.map(function(card){
-    return '<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);margin-bottom:6px;">'+
-    '<div style="flex:1;"><div style="font-size:var(--sm);font-weight:600;">'+card.q+'</div><div style="font-size:var(--xs);color:var(--muted);margin-top:2px;">\u2192 '+card.a+'</div></div>'+
-    '<button class="db" onclick="delPersoCard(\''+sid+'\','+card.id+')">&#x1F5D1;</button></div>';
-  }).join('')+'</div>';
-}
-function rPersoFC(){
-  var sid=S.persoS||'autre';
-  var cards=S.persoCards[sid]||[];
-  var z=document.getElementById('perso-fc');
-  if(!z)return;
-  if(!cards.length){z.innerHTML='';return;}
-  if(!S.fci['perso_'+sid])S.fci['perso_'+sid]=0;
-  var idx=S.fci['perso_'+sid]%cards.length;
-  var card=cards[idx];
-  z.innerHTML='<hr class="divl"><div style="font-size:var(--sm);font-weight:700;color:var(--muted);margin-bottom:8px;">&#x1F0CF; Entra\u00eene-toi ('+( idx+1)+'/'+cards.length+')</div>'+
-  '<div class="fcard" id="pfc" onclick="this.classList.toggle(\'flip\')"><div class="fci">'+
-  '<div class="fcf"><div>'+card.q+'</div><div class="fchint">Touche pour retourner</div></div>'+
-  '<div class="fcb"><div>'+card.a+'</div></div></div></div>'+
-  '<div style="display:flex;gap:8px;justify-content:center;margin-top:8px;">'+
-  '<button class="btn bs bsm" onclick="persoN(-1)">&#8592;</button>'+
-  '<button class="btn bok bsm" onclick="persoOk()">&#10003; Su</button>'+
-  '<button class="btn bno bsm" onclick="persoNo()">&#10007; Revoir</button>'+
-  '<button class="btn bs bsm" onclick="persoN(1)">&#8594;</button></div>';
-}
+function rPersoList(){var sid=S.persoS||'autre',cards=S.persoCards[sid]||[],c=document.getElementById('perso-list');if(!c)return;if(!cards.length){c.innerHTML='<div class="sp-friendly-empty"><strong>Aucune carte pour cette matière</strong><p>Crée une question et sa réponse pour commencer.</p></div>';return;}c.innerHTML='<p class="sp-card-count">'+cards.length+' carte'+(cards.length>1?'s':'')+' enregistrée'+(cards.length>1?'s':'')+'</p>'+cards.map(function(card){return '<div class="sp-personal-row"><div><strong>'+spEsc(card.q)+'</strong><p>'+spEsc(card.a)+'</p></div><button class="sp-small-delete" onclick="delPersoCard(\''+sid+'\','+card.id+')" aria-label="Supprimer cette carte" title="Supprimer cette carte">×</button></div>';}).join('');}
+function rPersoFC(){var sid=S.persoS||'autre',cards=S.persoCards[sid]||[],z=document.getElementById('perso-fc');if(!z)return;if(!cards.length){z.innerHTML='';return;}var key='perso_'+sid;if(!S.fci[key])S.fci[key]=0;var idx=S.fci[key]%cards.length,card=cards[idx];z.innerHTML='<div class="sp-personal-study"><h3>Je révise mes propres cartes</h3><p class="sp-rev-note">Carte '+(idx+1)+' / '+cards.length+' · Retrouve la réponse avant de retourner la carte.</p><div class="fcard" id="pfc" tabindex="0" role="button" aria-label="Retourner ma carte" onclick="this.classList.toggle(\'flip\')" onkeydown="if(event.key===\'Enter\'){this.click()}"><div class="fci"><div class="fcf"><div>'+spEsc(card.q)+'</div><div class="fchint">Appuie pour retourner</div></div><div class="fcb"><div>'+spEsc(card.a)+'</div></div></div></div><div class="sp-recall-actions"><button class="btn bs" onclick="persoN(-1)">←</button><button class="btn bno" onclick="persoNo()">À revoir</button><button class="btn bok" onclick="persoOk()">Je savais !</button><button class="btn bs" onclick="persoN(1)">→</button></div></div>';}
 function persoN(d){
   var sid=S.persoS||'autre';
   var cards=S.persoCards[sid]||[];
