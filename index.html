@@ -264,6 +264,36 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 #s-plan .tb,#s-rev .tb{border:1px solid #dce6e4;border-radius:12px;padding:10px 13px;background:#fffefa;color:#526879;font-weight:750;cursor:pointer}
 #s-plan .tb.active,#s-rev .tb.active{background:#e1f5f0;color:#176f68;border-color:#7dc9bf}
 @media(max-width:600px){.sp-homework{padding:13px}.sp-homework-icon{width:49px;height:49px;flex-basis:49px}.sp-homework-icon img{max-width:44px}.sp-homework-actions button{flex:1 1 42%;padding:8px 5px}.sp-homework-heading h3{font-size:.94rem}}
+
+/* STUDY POP V2.4 – consistent learning surfaces */
+.sp-section-intro{color:#667587;font-size:.94rem;line-height:1.65;margin:-2px 0 20px;max-width:750px}
+.sp-rev-note{font-size:.85rem;color:#627184;line-height:1.6;margin:-3px 0 17px}.sp-rev-note.sp-center{text-align:center;margin:12px 0}
+#s-rev .tabs{background:#f4f0e9;border:1px solid #ece5dc;border-radius:17px;padding:7px}
+#s-rev .tb{flex:1 1 115px;min-height:44px}
+#s-rev .card,#s-meth .card{border-radius:23px;background:#fffefa}
+#s-rev .sgrid,#s-meth .msubpk{gap:10px;display:flex;flex-wrap:wrap}
+#s-rev .chip,#s-meth .msubchip{display:flex;align-items:center;gap:8px;border:1px solid #e8e5e0!important;background:#fbf8f4!important;color:#263b50!important;border-radius:14px;padding:9px 12px;min-height:55px;box-shadow:none!important}
+#s-rev .chip.sel,#s-meth .msubchip.sel{border:2px solid #39a79e!important;background:#e7f5ef!important;color:#176f68!important;transform:none}
+#s-rev .sp-subject-icon,#s-meth .sp-subject-icon{width:37px;height:37px;object-fit:contain}
+#s-rev .sp-subject-label,#s-meth .sp-subject-label{font-size:.79rem;font-weight:800}
+#s-meth .mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:15px}
+#s-meth .sp-method-card{display:flex;flex-direction:column;align-items:flex-start;gap:8px;cursor:pointer;min-height:150px;background:linear-gradient(145deg,#fffefa,#f9f6f2);border:1px solid #e8e1d9;border-radius:19px;padding:17px;text-align:left;box-shadow:0 4px 12px #263b500b}
+#s-meth .sp-method-card:hover,#s-meth .sp-method-card:focus-visible{background:#eaf8f4;border-color:#65bfb2;transform:translateY(-2px)}
+.sp-method-number{font-size:.68rem;font-weight:900;color:#278d84;text-transform:uppercase;letter-spacing:.07em}
+#s-meth .mct{font-size:1.04rem;font-weight:900;color:#263b50}#s-meth .mcd{color:#607185;font-size:.8rem;line-height:1.45}
+.sp-method-arrow{margin-top:auto;color:#247f78;font-weight:800;font-size:.78rem}
+#mcbox .mcnt{background:#f5faf7;border:1px solid #bde2d8;color:#263b50;border-radius:18px;padding:22px;max-width:760px}
+.sp-study-progress{display:flex;align-items:center;gap:13px;margin:13px 0;font-size:.82rem;font-weight:800;color:#627184}
+.sp-study-track{height:9px;background:#e7e9e8;border-radius:20px;overflow:hidden;flex:1}.sp-study-track>div{height:100%;background:#49b9ad;border-radius:20px}
+#s-rev .fcnav{display:flex;justify-content:space-between;margin:12px 0}
+#s-rev .fcard{border-radius:24px;max-width:550px;margin:16px auto;box-shadow:0 7px 23px #263b5019}
+.sp-recall-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.sp-recall-actions button{min-height:46px;min-width:135px;font-size:.9rem}
+#s-rev .qo{border:1px solid #e2e6e6;background:#fffefa;border-radius:15px;margin:8px 0;padding:15px;cursor:pointer;color:#263b50;font-weight:600}
+#s-rev .qo:hover{border-color:#49b9ad;background:#f1faf7}
+#s-rev .qo.ok{border-color:#59bb9e;background:#e2f6e8}#s-rev .qo.no{border-color:#e78a8a;background:#fff0ec}
+.sp-friendly-empty{background:#f4f8f7;border:1px dashed #b3d8cf;padding:24px;text-align:center;border-radius:18px}.sp-friendly-empty p{font-size:.82rem;margin-top:5px;color:#637382}
+@media(max-width:600px){#s-meth .mgrid{grid-template-columns:1fr 1fr}#s-meth .sp-method-card{padding:12px;min-height:130px}#s-rev .chip,#s-meth .msubchip{padding:7px 9px}#s-rev .sp-subject-icon,#s-meth .sp-subject-icon{height:30px;width:30px}}
+
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -357,9 +387,9 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 
 <!-- FICHES AIDE -->
 <div id="s-meth" class="scr">
-<div class="stit">&#x1F4D6; Fiches <span>aide</span></div>
+<div class="stit">Mes <span>méthodes</span></div><p class="sp-section-intro">Choisis ta matière puis une stratégie. L’objectif est de comprendre comment travailler, pas de recopier une réponse.</p>
 <div class="card">
-  <div class="ct">Quelle mati&#xe8;re&#xa0;?</div>
+  <div class="ct">Dans quelle matière as-tu besoin d’aide ?</div>
   <div class="msubpk" id="msubpk"></div>
   <div class="mgrid" id="mgrid"></div>
   <div id="mcbox"></div>
@@ -368,31 +398,31 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 
 <!-- REVISION -->
 <div id="s-rev" class="scr">
-<div class="stit">&#x1F9E0; Je <span>r&#xe9;vise</span></div>
+<div class="stit">Mon atelier de <span>révisions</span></div><p class="sp-section-intro">Mémorise avec des cartes, puis vérifie ce que tu sais vraiment avec un quiz. Tu peux recommencer à ton rythme.</p>
 <div class="tabs">
-  <button class="tb active" onclick="rM('fc',this)">&#x1F0CF; Flashcards</button>
-  <button class="tb" onclick="rM('quiz',this)">&#x2753; Quiz</button>
-  <button class="tb" onclick="rM('perso',this)">&#x270F;&#xFE0F; Mes cartes</button>
-  <button class="tb" onclick="rM('prog',this)">&#x1F4CA; Progr&#xe8;s</button>
+  <button class="tb active" onclick="rM('fc',this)">Cartes mémoire</button>
+  <button class="tb" onclick="rM('quiz',this)">Quiz</button>
+  <button class="tb" onclick="rM('perso',this)">Mes cartes</button>
+  <button class="tb" onclick="rM('prog',this)">Mes progrès</button>
 </div>
 <div id="r-fc">
   <div class="card">
-    <div class="ct">&#x1F0CF; Flashcards</div>
+    <div class="ct">1. Je m’entraîne à retrouver une réponse</div><p class="sp-rev-note">Lis la question, essaie de répondre sans regarder, retourne la carte, puis indique si tu savais.</p>
     <div class="sgrid" id="fc-pk"></div>
-    <button class="btn bp bsm" onclick="startIrregVerbs(0)" style="width:100%;margin-bottom:10px;">&#x1F1EC;&#x1F1E7; Verbes irr&#xe9;guliers &#x2014; 200 flashcards</button>
+    <button class="btn bp bsm" onclick="startIrregVerbs(0)" style="width:100%;margin-bottom:10px;">Anglais : série spéciale des 200 verbes irréguliers</button>
     <div id="fcz"><div class="empty"><div class="ei">&#x1F0CF;</div><p>Choisis une mati&#xe8;re</p></div></div>
   </div>
 </div>
 <div id="r-quiz" style="display:none;">
   <div class="card">
-    <div class="ct">&#x2753; Quiz</div>
+    <div class="ct">2. Je vérifie mes connaissances</div><p class="sp-rev-note">Choisis une discipline. Réponds aux questions avant de consulter la correction et ton résultat.</p>
     <div class="sgrid" id="qz-pk"></div>
     <div id="qz"><div class="empty"><div class="ei">&#x2753;</div><p>Choisis une mati&#xe8;re</p></div></div>
   </div>
 </div>
 <div id="r-perso" style="display:none;">
   <div class="card">
-    <div class="ct">&#x270F;&#xFE0F; Mes flashcards personnelles</div>
+    <div class="ct">Mes cartes de révision personnalisées</div>
     <div class="fg"><label>Mati&#xe8;re</label><div class="sgrid" id="perso-pk"></div></div>
     <div style="display:flex;gap:8px;margin-bottom:12px;">
       <input type="text" id="perso-q" placeholder="Question..." style="flex:1;">
@@ -748,7 +778,7 @@ function pPause(){clearInterval(pT);pRun=false;var g=document.getElementById('pg
 function pReset(){pPause();pSec=pTot;pRdr();}
 function pRdr(){var m=Math.floor(pSec/60).toString().padStart(2,'0');var s=(pSec%60).toString().padStart(2,'0');document.getElementById('pt').textContent=m+':'+s;document.getElementById('pl').textContent=pMod==='work'?'TRAVAIL':'PAUSE';document.getElementById('pf').style.width=(pSec/pTot*100)+'%';}
 function mkMSubPk(){var c=document.getElementById('msubpk');if(!c)return;c.innerHTML='';SUBS.forEach(function(s){var ch=document.createElement('div');ch.className='msubchip'+(S.methS===s.id?' sel':'');ch.innerHTML=subjectIcon(s.id)+'<span class="sp-subject-label">'+s.l+'</span>';ch.style.background=S.methS===s.id?s.c+'33':s.b;ch.style.borderColor=S.methS===s.id?s.c:'rgba(255,255,255,.08)';ch.style.color=S.methS===s.id?s.c:'';if(S.methS===s.id)ch.style.boxShadow='0 0 10px '+s.c+'44';ch.onclick=function(){S.methS=s.id;sS();mkMSubPk();rMG();};c.appendChild(ch);});}
-function rMG(){var sub=S.methS||'math';var M=METHODES[sub]||METHODES['autre']||[];var g=document.getElementById('mgrid');if(!g)return;g.innerHTML=M.map(function(m,i){return '<div class="mc" onclick="showM('+i+',\''+sub+'\')"><div class="mci">'+m.icon+'</div><div class="mct">'+m.title+'</div><div class="mcd">'+m.desc+'</div></div>';}).join('');document.getElementById('mcbox').innerHTML='';}
+function rMG(){var sub=S.methS||'math';var M=METHODES[sub]||METHODES['autre']||[];var g=document.getElementById('mgrid');if(!g)return;g.innerHTML=M.map(function(m,i){return '<button type="button" class="mc sp-method-card" onclick="showM('+i+',\''+sub+'\')"><span class="sp-method-number">Méthode '+(i+1)+'</span><span class="mct">'+spEsc(m.title)+'</span><span class="mcd">'+spEsc(m.desc)+'</span><span class="sp-method-arrow">Voir la méthode →</span></button>';}).join('');document.getElementById('mcbox').innerHTML='';}
 function showM(i,sub){var M=METHODES[sub]||METHODES['autre']||[];var m=M[i];if(!m)return;document.getElementById('mcbox').innerHTML='<div class="mcnt open">'+m.content+'</div>';document.getElementById('mcbox').scrollIntoView({behavior:'smooth',block:'nearest'});S.fichesOpen=(S.fichesOpen||0)+1;chkB();sS();}
 
 function startIrregVerbs(idx){
@@ -802,7 +832,7 @@ function startIrregVerbs(idx){
   pgTxt.textContent=pct+'% parcouru';pg.appendChild(pgTxt);z.appendChild(pg);
 }
 
-function rFC(sid){var z=document.getElementById('fcz');var cards=FC[sid];if(!cards||!cards.length){z.innerHTML='<div class="empty"><div class="ei">🃏</div><p>Pas encore de flashcards.</p></div>';return;}if(!S.fci[sid])S.fci[sid]=0;var idx=S.fci[sid];var card=cards[idx];z.innerHTML='<div class="fcnav"><button class="btn bs bsm" onclick="fcN(-1,\''+sid+'\')">&#8592; Pr\u00e9c.</button><span class="fcc">'+(idx+1)+'/'+cards.length+'</span><button class="btn bs bsm" onclick="fcN(1,\''+sid+'\')">Suiv. &#8594;</button></div><div class="fcard" id="fcc" onclick="this.classList.toggle(\'flip\')"><div class="fci"><div class="fcf"><div>'+card.q+'</div><div class="fchint">Touche pour retourner</div></div><div class="fcb"><div>'+card.a+'</div></div></div></div><div style="display:flex;gap:10px;justify-content:center;"><button class="btn bok bsm" onclick="fcOk(\''+sid+'\')">&#10003; Je savais</button><button class="btn bno bsm" onclick="fcNo(\''+sid+'\')">&#10007; \u00c0 revoir</button></div>';}
+function rFC(sid){var z=document.getElementById('fcz'),cards=FC[sid];if(!z)return;if(!cards||!cards.length){z.innerHTML='<div class="sp-friendly-empty"><strong>Pas encore de cartes pour cette matière</strong><p>Tu peux créer tes propres cartes dans « Mes cartes ».</p></div>';return;}if(!Number.isInteger(S.fci[sid])||S.fci[sid]>=cards.length)S.fci[sid]=0;var idx=S.fci[sid],card=cards[idx];z.innerHTML='<div class="sp-study-progress"><span>Carte '+(idx+1)+' sur '+cards.length+'</span><div class="sp-study-track"><div style="width:'+Math.round((idx+1)/cards.length*100)+'%"></div></div></div><div class="fcnav"><button class="btn bs bsm" onclick="fcN(-1,\''+sid+'\')">← Précédente</button><button class="btn bs bsm" onclick="fcN(1,\''+sid+'\')">Suivante →</button></div><div class="fcard" id="fcc" role="button" tabindex="0" aria-label="Retourner la carte" onclick="this.classList.toggle(\'flip\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \' ){event.preventDefault();this.click()}"><div class="fci"><div class="fcf"><div>'+spEsc(card.q)+'</div><div class="fchint">Appuie pour découvrir la réponse</div></div><div class="fcb"><div>'+spEsc(card.a)+'</div></div></div></div><p class="sp-rev-note sp-center">Après avoir vérifié la réponse, choisis ton niveau de réussite.</p><div class="sp-recall-actions"><button class="btn bno" onclick="fcNo(\''+sid+'\')">À revoir</button><button class="btn bok" onclick="fcOk(\''+sid+'\')">Je savais !</button></div>';}
 function fcN(d,sid){var c=FC[sid]||[];var i=(S.fci[sid]||0)+d;if(i<0)i=c.length-1;if(i>=c.length)i=0;S.fci[sid]=i;rFC(sid);}
 function fcOk(sid){S.flashD=(S.flashD||0)+1;S.prog[sid]=Math.min(100,(S.prog[sid]||0)+5);addXP(5,'Flashcard ok');fcN(1,sid);}
 function fcNo(sid){S.flashD=(S.flashD||0)+1;addXP(2);fcN(1,sid);}
