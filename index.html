@@ -194,6 +194,19 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 @media(max-width:620px){#topbar{height:58px;padding:0 9px}.sp-hero{padding:19px}.sp-mascot{font-size:3.4rem}.sp-grid{gap:10px}.sp-tile{padding:15px}.nb{min-width:78px;font-size:.67rem}#nav{position:sticky;top:58px;z-index:99;padding:5px 2px;gap:0}#main{padding:14px 12px 96px}}
 @media(prefers-reduced-motion:reduce){.sp-tile,.nb{transition:none!important}.pg{animation:none!important}}
 
+
+/* STUDY POP: high-definition illustration slots */
+.sp-mascot{width:clamp(105px,22vw,170px);flex:0 0 auto;font-size:0!important;margin-left:auto;display:flex;justify-content:center}
+.sp-mascot img{width:100%;max-height:170px;height:auto;object-fit:contain;filter:drop-shadow(0 9px 12px #a563532b)}
+.sp-ico{display:block;height:94px!important;font-size:0!important}
+.sp-ico img{width:105px;height:94px;max-width:100%;object-fit:contain;display:block;filter:drop-shadow(0 5px 6px #263B5014)}
+.sp-tile{min-height:175px}
+.sp-nav-image{height:27px;width:32px;object-fit:contain;display:block}
+#nav .ni:has(.sp-nav-image){display:flex;align-items:center;justify-content:center;height:31px}
+#nav .ni:has(.sp-nav-image){font-size:0}
+#nav .ni img{font-size:initial}
+@media(max-width:620px){.sp-mascot{width:108px}.sp-mascot img{max-height:116px}.sp-ico{height:72px!important}.sp-ico img{height:70px;width:82px}.sp-tile{min-height:153px}.sp-nav-image{width:29px;height:28px}}
+
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -210,26 +223,26 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 </div>
 
 <div id="nav">
-  <button class="nb active" onclick="go('home')" id="nav-home"><span class="ni">🏠</span>Accueil</button>
-  <button class="nb" onclick="go('plan')" id="nav-plan"><span class="ni">&#x1F4C5;</span>Planning</button>
-  <button class="nb" onclick="go('meth')" id="nav-meth"><span class="ni">&#x1F4D6;</span>Fiches aide</button>
-  <button class="nb" onclick="go('rev')" id="nav-rev"><span class="ni">&#x1F9E0;</span>Je r&#xe9;vise</button>
-  <button class="nb" onclick="go('mind')" id="nav-mind"><span class="ni">&#x1F9E9;</span>MindMap</button>
-  <button class="nb" onclick="go('prof')" id="nav-prof"><span class="ni">&#x1F3C6;</span>Profil</button>
+  <button class="nb active" onclick="go('home')" id="nav-home"><span class="ni"><img class="sp-nav-image" src="assets/study-pop/planning.webp" alt="" onerror="this.style.display=\x27none\x27"></span>Accueil</button>
+  <button class="nb" onclick="go('plan')" id="nav-plan"><span class="ni"><img class="sp-nav-image" src="assets/study-pop/planning.webp" alt="" onerror="this.style.display=\x27none\x27"></span>Planning</button>
+  <button class="nb" onclick="go('meth')" id="nav-meth"><span class="ni"><img class="sp-nav-image" src="assets/study-pop/aides.webp" alt="" onerror="this.style.display=\x27none\x27"></span>Fiches aide</button>
+  <button class="nb" onclick="go('rev')" id="nav-rev"><span class="ni"><img class="sp-nav-image" src="assets/study-pop/revisions.webp" alt="" onerror="this.style.display=\x27none\x27"></span>Je r&#xe9;vise</button>
+  <button class="nb" onclick="go('mind')" id="nav-mind"><span class="ni"><img class="sp-nav-image" src="assets/study-pop/mindmap.webp" alt="" onerror="this.style.display=\x27none\x27"></span>MindMap</button>
+  <button class="nb" onclick="go('prof')" id="nav-prof"><span class="ni"><img class="sp-nav-image" src="assets/study-pop/recompenses.webp" alt="" onerror="this.style.display=\x27none\x27"></span>Profil</button>
 </div>
 
 <div id="main">
 
 <!-- STUDY POP DASHBOARD -->
 <div id="s-home" class="scr active">
- <section class="sp-hero"><div><span class="sp-eyebrow">OBJECTIF DEVOIRS • STUDY POP</span><h1 id="sp-greeting">Prêt pour ta mission ?</h1><p>Un petit pas à la fois. Toutes tes matières au même endroit.</p></div><div class="sp-mascot" aria-hidden="true">🐼</div></section>
+ <section class="sp-hero"><div><span class="sp-eyebrow">OBJECTIF DEVOIRS • STUDY POP</span><h1 id="sp-greeting">Prêt pour ta mission ?</h1><p>Un petit pas à la fois. Toutes tes matières au même endroit.</p></div><div class="sp-mascot" aria-hidden="true"><img src="assets/study-pop/mascotte.webp" alt="" onerror="this.outerHTML=\x27🐼\x27"></div></section>
  <section class="sp-summary" aria-label="Mes missions du jour"><strong style="font:900 1.2rem Nunito,system-ui">🎯 Mes devoirs</strong><p id="sp-count" class="sp-note">Retrouve tes devoirs et avance à ton rythme.</p><div class="sp-progress" aria-hidden="true"><div id="sp-fill" style="width:0%"></div></div><div class="sp-actions"><button onclick="go('plan')">Voir mon planning →</button><button onclick="go('rev')">Réviser maintenant</button></div></section>
  <div class="sp-grid">
-  <button class="sp-tile" onclick="go('plan')"><span class="sp-ico">📅</span><b>Mon planning</b><small>Organiser mes devoirs et me concentrer</small></button>
-  <button class="sp-tile" onclick="go('meth')"><span class="sp-ico">📖</span><b>Mes aides</b><small>Des méthodes pour toutes les disciplines</small></button>
-  <button class="sp-tile" onclick="go('rev')"><span class="sp-ico">🧠</span><b>Je révise</b><small>Flashcards, quiz et progrès</small></button>
-  <button class="sp-tile" onclick="go('mind')"><span class="sp-ico">🧩</span><b>MindMap Studio</b><small>Créer et exporter mes cartes mentales</small></button>
-  <button class="sp-tile" onclick="go('prof')"><span class="sp-ico">🏆</span><b>Mes récompenses</b><small>XP, badges et profil</small></button>
+  <button class="sp-tile" onclick="go('plan')"><span class="sp-ico"><img src="assets/study-pop/planning.webp" alt="" onerror="this.style.display=\x27none\x27"></span><b>Mon planning</b><small>Organiser mes devoirs et me concentrer</small></button>
+  <button class="sp-tile" onclick="go('meth')"><span class="sp-ico"><img src="assets/study-pop/aides.webp" alt="" onerror="this.style.display=\x27none\x27"></span><b>Mes aides</b><small>Des méthodes pour toutes les disciplines</small></button>
+  <button class="sp-tile" onclick="go('rev')"><span class="sp-ico"><img src="assets/study-pop/revisions.webp" alt="" onerror="this.style.display=\x27none\x27"></span><b>Je révise</b><small>Flashcards, quiz et progrès</small></button>
+  <button class="sp-tile" onclick="go('mind')"><span class="sp-ico"><img src="assets/study-pop/mindmap.webp" alt="" onerror="this.style.display=\x27none\x27"></span><b>MindMap Studio</b><small>Créer et exporter mes cartes mentales</small></button>
+  <button class="sp-tile" onclick="go('prof')"><span class="sp-ico"><img src="assets/study-pop/recompenses.webp" alt="" onerror="this.style.display=\x27none\x27"></span><b>Mes récompenses</b><small>XP, badges et profil</small></button>
  </div>
  <p class="sp-note">Les cinq rubriques de la version précédente restent accessibles et fonctionnelles.</p>
 </div>
