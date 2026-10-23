@@ -314,6 +314,21 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 #s-rev input,#s-rev textarea,#s-rev button,#s-meth button{max-width:100%;box-sizing:border-box}
 @media(max-width:600px){#s-rev .card,#s-meth .card{padding:14px}.sp-quiz-result{padding:19px 13px}.sp-result-actions button{flex:1 1 150px}.sp-personal-study{padding:13px 9px}.sp-personal-study .sp-recall-actions{gap:6px}.sp-personal-study .sp-recall-actions button{min-width:0;padding:9px 11px}#s-rev .fg{min-width:0}#s-rev #perso-q,#s-rev #perso-a{min-width:0;width:100%}#s-rev #r-perso .fg+div{flex-wrap:wrap!important}#s-rev #r-perso .fg+div input{flex:1 1 160px!important}#reward-modal .reward-box{margin:12px}}
 @media(prefers-reduced-motion:reduce){#reward-modal *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Study Pop V2.6: optional reflection after homework */
+.sp-check-overlay[hidden]{display:none!important}
+.sp-check-overlay{position:fixed;inset:0;z-index:12000;background:#263b5099;display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
+.sp-check-open{overflow:hidden}
+.sp-check-card{position:relative;background:#fffefa;color:#263b50;border-radius:24px;width:min(100%,530px);max-height:calc(100dvh - 30px);overflow-y:auto;box-shadow:0 20px 70px #121f3040;padding:24px}
+.sp-check-x{position:absolute;top:12px;right:15px;background:#f1eeeb;color:#263b50;border:0;border-radius:50%;width:36px;height:36px;font-size:24px;cursor:pointer}
+.sp-check-top{display:flex;align-items:center;gap:14px;padding-right:30px}.sp-check-top img{object-fit:contain}.sp-check-top h2{font:900 1.5rem Nunito,system-ui}
+.sp-check-task{background:#e9f6f1;border-radius:13px;padding:11px 13px;margin:12px 0;font-weight:750;overflow-wrap:anywhere}
+.sp-check-card textarea{display:block;width:100%;box-sizing:border-box;margin:10px 0 16px;min-height:80px;background:white;border:1px solid #cddbd8;color:#263b50}
+.sp-check-card fieldset{display:grid;gap:9px;border:0;margin:0 0 17px;padding:0}.sp-check-card legend{margin-bottom:8px}
+.sp-check-card fieldset label{display:flex;align-items:center;gap:9px;background:#f8f5f0;padding:9px;border-radius:10px;cursor:pointer}
+.sp-check-card input[type=radio]{accent-color:#369f93;width:18px;height:18px}
+.sp-check-actions{display:flex;gap:8px;flex-wrap:wrap}.sp-check-actions button{flex:1 1 140px;min-height:43px;border-radius:12px;border:1px solid #73bfb3;background:#def2ed;color:#1e615b;font-weight:800;cursor:pointer;padding:9px}.sp-check-actions button:first-child{background:#ff817b;border-color:#ff817b;color:#263b50}.sp-check-actions .sp-check-later{background:#fffefa;border-color:#d9e1df}
+@media(max-width:500px){.sp-check-card{padding:18px 15px}.sp-check-top img{width:57px;height:57px}.sp-check-top h2{font-size:1.25rem}}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -416,6 +431,7 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 </div>
 </div><!-- /s-meth -->
 
+<div id="sp-check-modal" class="sp-check-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="sp-check-title"><div class="sp-check-card"><button class="sp-check-x" type="button" onclick="spCloseCheck()" aria-label="Fermer">×</button><div class="sp-check-top"><img src="assets/study-pop/revisions.webp" alt="" width="76" height="76"><div><span class="sp-guide-kicker">MON PETIT BILAN</span><h2 id="sp-check-title">Qu'ai-je retenu ?</h2></div></div><p class="sp-check-task" id="sp-check-task"></p><label for="sp-check-answer"><strong>Sans regarder mon cours, je peux expliquer…</strong></label><textarea id="sp-check-answer" rows="3" maxlength="700" placeholder="Une règle, une démarche, une date, une notion…"></textarea><fieldset><legend><strong>Je me sens capable de refaire ce travail :</strong></legend><label><input type="radio" name="sp-confidence" value="oui"> Oui, seul(e)</label><label><input type="radio" name="sp-confidence" value="presque"> Avec une petite aide</label><label><input type="radio" name="sp-confidence" value="revoir"> Je dois revoir</label></fieldset><div class="sp-check-actions"><button type="button" onclick="spSaveCheck(false)">Enregistrer mon bilan</button><button type="button" onclick="spReviseCheck()">Me tester</button><button type="button" class="sp-check-later" onclick="spCloseCheck()">Plus tard</button></div></div></div>
 <!-- REVISION -->
 <div id="s-rev" class="scr">
 <div class="stit">Mon atelier de <span>révisions</span></div><p class="sp-section-intro">Mémorise avec des cartes, puis vérifie ce que tu sais vraiment avec un quiz. Tu peux recommencer à ton rythme.</p>
@@ -758,11 +774,17 @@ function updT(){document.getElementById('xpd').textContent='\u26a1 '+S.xp+' XP';
 function buildDP(){var pk=document.getElementById('day-picker');if(!pk)return;var today=new Date();var dow=(today.getDay()+6)%7;var mon=new Date(today);mon.setDate(today.getDate()-dow);pk.innerHTML='';for(var i=0;i<7;i++){var dt=new Date(mon);dt.setDate(mon.getDate()+i);var iso=dt.toISOString().split('T')[0];var isT=dt.toDateString()===today.toDateString();var isSel=selDay===iso;var btn=document.createElement('button');btn.type='button';btn.className='dpb'+((isSel||(isT&&!selDay))?' sel':'');btn.innerHTML=DAY_LBL[i]+'<br><small style="opacity:.7;font-size:.6rem;">'+dt.getDate()+'</small>';(function(d){btn.onclick=function(){selDay=(selDay===d)?null:d;document.getElementById('hwdate').value=selDay||'';buildDP();};})(iso);pk.appendChild(btn);}}
 function clickDay(iso){selDay=(selDay===iso)?null:iso;document.getElementById('hwdate').value=selDay||'';buildDP();rWeek();initMM();initMMCanvas();}
 function addHW(){var d=document.getElementById('hwdesc').value.trim();var dt=document.getElementById('hwdate').value||selDay||'';if(!d){(function(){var el=document.getElementById('xpn');el.textContent='⚠️ Décris le devoir !';el.style.background='#d4836a';el.classList.add('show');setTimeout(function(){el.classList.remove('show');el.style.background='';},2500);})();;return;}if(!S.selS){(function(){var el=document.getElementById('xpn');el.textContent='⚠️ Choisis une matière !';el.style.background='#d4836a';el.classList.add('show');setTimeout(function(){el.classList.remove('show');el.style.background='';},2500);})();;return;}S.hw.push({id:Date.now(),sub:S.selS,desc:d,date:dt,done:false});addXP(10,'Devoir ajout\u00e9');sS();document.getElementById('hwdesc').value='';selDay=null;document.getElementById('hwdate').value='';buildDP();rHW('all');rWeek();}
-function togHW(id){var hw=S.hw.find(function(x){return x.id===id;});if(!hw)return;hw.done=!hw.done;if(hw.done){addXP(20,'Devoir terminé !');showReward(hw);}sS();rHW(curF);rWeek();}
+function togHW(id){var hw=S.hw.find(function(x){return x.id===id;});if(!hw)return;hw.done=!hw.done;if(hw.done){addXP(20,'Devoir terminé !');window.spPendingCheck=hw.id;showReward(hw);}else if(window.spPendingCheck===hw.id){window.spPendingCheck=null;}sS();rHW(curF);rWeek();}
 function delHW(id){S.hw=S.hw.filter(function(h){return h.id!==id;});sS();rHW(curF);rWeek();}
 var curF='all';
 function fHW(f,btn){curF=f;document.querySelectorAll('#s-plan .tb').forEach(function(b){b.classList.remove('active');});if(btn)btn.classList.add('active');rHW(f);}
 
+
+function spShowCheck(id){var h=S.hw.find(function(x){return x.id===id});if(!h)return;window.spCheckId=id;var m=document.getElementById('sp-check-modal');document.getElementById('sp-check-task').textContent=gSub(h.sub).l+' — '+h.desc;document.getElementById('sp-check-answer').value=(h.reflection&&h.reflection.answer)||'';m.querySelectorAll('[name="sp-confidence"]').forEach(function(x){x.checked=!!(h.reflection&&h.reflection.confidence===x.value);});m.hidden=false;document.body.classList.add('sp-check-open');m.querySelector('.sp-check-x').focus();}
+function spCloseCheck(){var m=document.getElementById('sp-check-modal');if(m)m.hidden=true;document.body.classList.remove('sp-check-open');window.spCheckId=null;}
+function spSaveCheck(goRev){var h=S.hw.find(function(x){return x.id===window.spCheckId});if(!h)return;var chosen=document.querySelector('#sp-check-modal input[name="sp-confidence"]:checked');h.reflection={answer:document.getElementById('sp-check-answer').value.trim(),confidence:chosen?chosen.value:'',date:new Date().toISOString()};sS();spCloseCheck();rHW(curF);spHome();if(goRev)spOpenRevision(h.sub);}
+function spReviseCheck(){spSaveCheck(true);}
+function spOpenRevision(sub){go('rev');var tab=document.querySelector('#s-rev .tb');if(tab)rM('fc',tab);if(FC[sub]&&FC[sub].length){S.fcS=sub;mkPk('fc-pk',sub,function(id){S.fcS=id;rFC(id);sS();});rFC(sub);}else if(QZ[sub]&&QZ[sub].length){var tabs=document.querySelectorAll('#s-rev .tb');if(tabs[1])rM('quiz',tabs[1]);S.qzS=sub;mkPk('qz-pk',sub,function(id){S.qzS=id;startQZ(id);sS();});startQZ(sub);}}
 function spEsc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
 function spSteps(h){if(!Array.isArray(h.steps))h.steps=[];return h.steps;}
 function spAddStep(id){var h=S.hw.find(function(x){return x.id===id});if(!h)return;var e=document.getElementById('sp-step-'+id),v=e&&e.value.trim();if(!v)return;spSteps(h).push({text:v,done:false});sS();rHW(curF);}
@@ -919,6 +941,7 @@ function showReward(hw){
 function closeReward(){
   document.getElementById('reward-modal').classList.remove('show');
   document.querySelectorAll('.reward-confetti').forEach(function(el){el.remove();});
+  if(window.spPendingCheck){var id=window.spPendingCheck;window.spPendingCheck=null;spShowCheck(id);}
 }
 function spawnConfetti(emoji){
   var emojis=[emoji,'\uD83C\uDF89','\u2B50','\uD83C\uDF1F','\uD83C\uDF88'];
