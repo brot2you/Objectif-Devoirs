@@ -394,7 +394,7 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 .sp-review-buttons button:first-child{background:#257f70!important;color:white!important;border-color:#257f70!important}
 @media(max-width:810px){.sp-v3-route{grid-template-columns:repeat(3,minmax(0,1fr))}.sp-v3-step{min-height:125px}}
 @media(max-width:530px){.sp-v3-journey{padding:13px}.sp-v3-route{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.sp-v3-step{min-height:110px;padding:9px 5px}.sp-v3-step span{width:33px;height:33px}.sp-v3-step strong{font-size:.83rem}.sp-v3-step small{font-size:.69rem}.sp-summary .sp-actions button{flex:1 1 100%}.sp-v3-journey h2{font-size:1.25rem}}
-.sp-profile-mascot{width:138px;height:138px;margin:4px auto 14px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:50%;background:linear-gradient(145deg,#fce2e5,#e6f5f4);border:4px solid #fff;box-shadow:0 6px 20px #20394d20}.sp-profile-mascot img{width:124px;height:124px;object-fit:contain;transform:scaleX(-1) rotate(-8deg)}@media(max-width:480px){.sp-profile-mascot{width:116px;height:116px}.sp-profile-mascot img{width:105px;height:105px}}</style>
+.sp-profile-mascot{width:138px;height:138px;margin:4px auto 14px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:50%;background:linear-gradient(145deg,#fce2e5,#e6f5f4);border:4px solid #fff;box-shadow:0 6px 20px #20394d20}.sp-profile-mascot img{width:124px;height:124px;object-fit:contain;transform:scaleX(-1) rotate(-8deg)}@media(max-width:480px){.sp-profile-mascot{width:116px;height:116px}.sp-profile-mascot img{width:105px;height:105px}}/* Study Pop mind map UX */#s-mind>.card,#s-mind #mm-editor>.card{background:#fffefa;border:2px solid #b5d8e9;border-radius:22px}#s-mind .stit{color:#1d435a}#s-mind .sp-mm-tip{background:#fff0c5;color:#6b501e;border-left:5px solid #dfaa35;border-radius:11px;padding:11px 13px;font-weight:750;font-size:.83rem;line-height:1.5;margin:8px 0 14px}#s-mind .sp-mm-tip-blue{background:#e3f3ff;border-left-color:#5ca6d2;color:#265a7b}#s-mind #mm-list>div{background:#fff!important;border:1px solid #d7e6e7!important;border-radius:14px!important;box-shadow:0 3px 10px #263b500a}#s-mind .sp-mm-controls{background:#eff8f5;border:1px solid #c9e3d8;border-radius:15px;padding:12px}#s-mind #mm-node-text{min-height:43px;min-width:175px}#s-mind #mm-node-color{min-height:43px;background:#fff;border:1px solid #bbcfce;color:#263b50}#s-mind #mm-editor button{min-height:41px}#s-mind #mm-canvas-wrap{max-width:100%;touch-action:pan-x pan-y}#s-mind #mm-canvas{max-width:none}#s-mind #mm-editor-title{font-size:1.1rem!important}@media(max-width:560px){#s-mind #mm-node-text{flex:1 1 100%!important}#s-mind .sp-mm-controls button{flex:1 1 130px}#s-mind #mm-canvas-wrap{min-height:310px!important}}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
@@ -542,9 +542,9 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 
 <!-- MINDMAP -->
 <div id="s-mind" class="scr">
-<div class="stit">&#x1F9E9; Mind<span>Maps</span></div>
+<div class="stit">Mes <span>cartes mentales</span></div><p class="sp-section-intro">Une carte mentale sert à organiser les idées autour d’un sujet. Commence par une idée centrale, puis ajoute des branches courtes et claires.</p>
 <div class="card" id="mm-list-card">
-  <div class="ct">Mes cartes mentales</div>
+  <div class="ct">1. Je crée ou j’ouvre ma carte</div><div class="sp-mm-tip">Astuce · Donne un titre précis, par exemple « Les causes de la Révolution française ».</div>
   <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;">
     <input type="text" id="mm-name" placeholder="Nom (ex : Photosynthèse)" style="flex:1;min-width:140px;">
     <button class="btn bp bsm" onclick="createMM()">+ Nouvelle</button>
@@ -554,12 +554,12 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
 <div id="mm-editor" style="display:none;">
   <div class="card">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;">
-      <div class="ct" style="margin:0;flex:1;" id="mm-editor-title">MindMap</div>
+      <div class="ct" style="margin:0;flex:1;" id="mm-editor-title">Ma carte mentale</div>
       <button class="btn bs bsm" onclick="closeMM()">&#x2190; Retour</button>
-      <button class="btn bp bsm" onclick="exportMM()">&#x1F4E4; PNG</button>
+      <button class="btn bp bsm" onclick="exportMM()">Télécharger en PNG</button>
     </div>
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center;">
-      <input type="text" id="mm-node-text" placeholder="Texte du n&#x153;ud..." style="flex:1;min-width:120px;">
+    <div class="sp-mm-tip">2. Sélectionne une bulle sur la carte. Écris un mot-clé, choisis sa couleur, puis ajoute une branche.</div><div class="sp-mm-controls" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center;">
+      <input type="text" id="mm-node-text" placeholder="Un mot-clé ou une idée courte" style="flex:1;min-width:120px;">
       <select id="mm-node-color" style="width:auto;padding:8px;border-radius:8px;">
         <option value="#7eb8a0">Sauge</option>
         <option value="#6b8caa">Ardoise</option>
@@ -578,18 +578,18 @@ input,textarea,select{border-radius:12px;background:#fffdfb;color:#263B50}
         <option value="#98d8d8">Turquoise</option>
         <option value="#d888b8">Pivoine</option>
       </select>
-      <button class="btn bp bsm" id="mm-add-btn" onclick="addMMNode()">+ Enfant</button>
-      <button class="btn bs bsm" onclick="addMMSibling()">+ M&#xea;me niveau</button>
+      <button class="btn bp bsm" id="mm-add-btn" onclick="addMMNode()">+ Ajouter une branche</button>
+      <button class="btn bs bsm" onclick="addMMSibling()">+ Idée parallèle</button>
     </div>
     <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
       <button class="btn bs bsm" onclick="editMMNode()" id="mm-edit-btn" style="display:none;">&#x270F; Modifier</button>
       <button class="btn bno bsm" onclick="deleteMMNode()" id="mm-del-btn" style="display:none;">&#x1F5D1; Noeud</button>
       <button class="btn bs bsm" onclick="selectParent()" id="mm-up-btn" style="display:none;">&#x2191; Parent</button>
     </div>
-    <div id="mm-canvas-wrap" style="overflow:auto;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(0,0,0,.25);min-height:350px;">
+    <div class="sp-mm-tip sp-mm-tip-blue">3. Construis ta carte. Les couleurs peuvent t’aider à distinguer les grandes idées. Termine par « Télécharger en PNG ».</div><div id="mm-canvas-wrap" style="overflow:auto;border:1px solid #bcd8dd;border-radius:18px;background:#f5fbff;min-height:350px;-webkit-overflow-scrolling:touch;">
       <canvas id="mm-canvas" style="display:block;"></canvas>
     </div>
-    <p style="font-size:.7rem;color:var(--muted);margin-top:6px;text-align:center;">Touche un n&#x153;ud pour le s&#xe9;lectionner · Fond = d&#xe9;s&#xe9;lectionner</p>
+    <p style="font-size:.7rem;color:var(--muted);margin-top:6px;text-align:center;">Clique ou touche une bulle pour la modifier · Touche le fond pour désélectionner · Sur téléphone, fais défiler la zone pour explorer la carte</p>
   </div>
 </div>
 </div><!-- /s-mind -->
